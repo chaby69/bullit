@@ -1,0 +1,17 @@
+{% assign docs = include.docs %}
+
+<ul class="nav nav-pills nav-stacked">
+	{% for doc in docs %}
+		{% assign doc_url = doc | prepend:"/docs/" | append:"/" %}
+		{% if doc_url == page.url %}
+			{% assign c = "current" %}
+		{% else %}
+			{% assign c = "" %}
+		{% endif %}
+		{% for p in site.docs %}
+			{% if p.url == doc_url %}
+				<li class="{{ c }}"><a href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a></li>
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
+</ul>

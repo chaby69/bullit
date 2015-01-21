@@ -1,0 +1,22 @@
+# Site settings
+title: Bullit
+email: contact@bullit.io
+description: > # description
+  Affichage temps réel des Tweets et SMS de vos visiteurs sur de multiples supports, 
+  écrans, TV et objets connectés (ChromeCast, Sparkio, ...).
+baseurl: "/miniapp" # the subpath of your site, e.g. /blog/
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: wall_factory
+github_username: dweez
+
+# Build settings
+markdown: kramdown
+highlighter: pygments
+excerpt_separator: <!--more-->
+
+appname: bullit
+tagline: SMS, Twitter et autres flux
+collections:
+  docs:
+    output: true
+    foo: bar

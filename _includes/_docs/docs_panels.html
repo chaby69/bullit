@@ -1,0 +1,18 @@
+{% assign docs = include.docs %}
+<ul class="docs-block">
+{% for doc in docs %}
+	{% assign doc_url = doc | prepend:"/docs/" | append:"/" %}
+	{% for p in site.docs %}
+		{% if p.url == doc_url %}
+		<li class="doc-detail">
+		<!-- <div class="doc-detail"> -->
+			<h3><a href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a></h3>
+			<p class="doc-description">{{ p.description }}</p>
+			<!-- <hr/> -->
+		<!-- </div> -->
+		</li>
+		{% endif %}
+	{% endfor %}
+{% endfor %}
+</ul>
+<hr/>

@@ -1,0 +1,30 @@
+- title: Installation
+  title-long: "Installation de l'application"
+  desc: "En local ou sur un serveur dédié, en cloud ou embarqué sur une Raspberry Pi, vidéo-projeté sur un vieux tritube ou connecté à votre TV avec une clé Chromecast, tout type d'installation est possible. Reste à écrire les tutoriaux :)"
+  docs:
+  - install_local_rapide
+  - raspberrypi
+  - grabbers
+  - frontend
+  - settings
+  - divers
+
+- title: Utilisation
+  title-long: "Utilisation"
+  desc: "Prise en main de l'application, description des fonctionalités"
+  docs:
+  - devices
+
+- title: Heroku
+  title-long: "Bullit sur Heroku"
+  desc: "Vous avez besoin d'un SmsWall dans les 5 minutes ? Le service d'hébergement en cloud Heroku est actuellement la manière la plus simple et rapide d'installer un Bullit."
+  docs:
+  - install_heroku
+  - install_foreman
+
+- title: Annexes
+  title-long: "Installations diverses"
+  desc: ""
+  docs:
+  - python
+  - mongodb
