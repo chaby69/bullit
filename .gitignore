@@ -1,0 +1,8 @@
+/env
+/lib
+/node_modules
+/bower_components
+*.pyc
+
+config.py
+.env
