@@ -11,7 +11,9 @@
             "description": "Clé secrète de votre installation",
             "generator": "secret"
         },
-        "HEROKU": 1,
+        "HEROKU": {
+            "value": 1
+        },
         "DEBUG": {
             "value": true
         },
