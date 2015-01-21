@@ -4,7 +4,7 @@ email: contact@bullit.io
 description: > # description
   Affichage temps réel des Tweets et SMS de vos visiteurs sur de multiples supports, 
   écrans, TV et objets connectés (ChromeCast, Sparkio, ...).
-baseurl: "/" # the subpath of your site, e.g. /blog/
+baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://doc.bullit.io" # the base hostname & protocol for your site
 twitter_username: wall_factory
 github_username: dweez
