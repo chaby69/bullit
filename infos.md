@@ -1,13 +1,12 @@
 ---
-layout: page-col
+layout: page-col-infos
 title: Infos
 permalink: /infos/
 category: infos
 ---
 
-## En deux mots
 
-Bullit est un prototype qui permet d'afficher en temps réel des Tweets et SMS sur plusieurs écrans en live
+<p class="lead">Bullit est un prototype qui permet d'afficher en temps réel des Tweets et SMS sur plusieurs écrans simultanément</p>
 
 ---
 
