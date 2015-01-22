@@ -34,44 +34,6 @@ header.site-header {
 
 }
 
-/*.post-meta {*/
-.bg-info-box {
-    background-color: rgba(50, 50, 50, 0.2);
-    border-color: #5c5c5c #747474 #747474 #5c5c5c;
-    border-radius: 6px;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8) inset;
-    color: #ccc;
-    /*font-size: 80%;*/
-    padding: 3px 8px;
-    margin-bottom: 15px;
-}
-
-.bg-alert-box {
-    /*background-color: rgba(50, 50, 50, 0.2);*/
-    background-color: rgba(51, 51, 51, 0.75);
-    border-color: #5c5c5c #747474 #747474 #5c5c5c;
-    border-radius: 6px;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8) inset;
-    color: #eee;
-    /*font-size: 80%;*/
-    padding: 10px;
-    margin-bottom: 15px;
-    text-align: center;
-    // font-weight: bold;
-    img {
-        border: 3px solid #fff;
-        background-color: #fff;
-        border-radius: 4px;
-    }
-    small {
-        font-weight: normal;
-        color: #999;
-    }
-}
 
 h2 {
     color: $brand-color;
@@ -207,6 +169,51 @@ h2 {
         
     }
 }
+
+
+/*.post-meta {*/
+.bg-info-box {
+    background-color: rgba(50, 50, 50, 0.2);
+    border-color: #5c5c5c #747474 #747474 #5c5c5c;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8) inset;
+    color: #ccc;
+    /*font-size: 80%;*/
+    padding: 3px 8px;
+    margin-bottom: 15px;
+}
+
+.bg-alert-box {
+    /*background-color: rgba(50, 50, 50, 0.2);*/
+    background-color: rgba(51, 51, 51, 0.75);
+    border-color: #5c5c5c #747474 #747474 #5c5c5c;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.8) inset;
+    color: #eee;
+    /*font-size: 80%;*/
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    // font-weight: bold;
+    img {
+        border: 3px solid #fff;
+        background-color: #fff;
+        border-radius: 4px;
+    }
+    span.detail {
+        font-size: 85%;
+        font-style: italic;
+        font-weight: normal;
+        color: #999;
+        
+        margin-bottom: 0;
+    }
+}
+
 
 footer {
     padding: 15px 0;
