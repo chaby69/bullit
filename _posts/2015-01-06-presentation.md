@@ -2,8 +2,8 @@
 layout: post
 title:  "Petite présentation de Bullit"
 author: dweez
-date:   2015-01-06 15:32:28
-categories: smswall bullit
+date:   2015-01-21 22:32:28
+category: post
 ---
 
 #### Du SmsWall à Bullit

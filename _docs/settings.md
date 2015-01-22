@@ -2,7 +2,7 @@
 layout: page-col
 title: Configuration
 description: Détail des différents paramètres modifiables du fichier `config.py`
-categories: ['configuration']
+category: docs
 permalink: /docs/settings/
 ---
 

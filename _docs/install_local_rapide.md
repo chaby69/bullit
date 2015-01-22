@@ -2,7 +2,7 @@
 layout: page-col
 title: Bullit en local
 description: Installation de Bullit pour une utilisation monoposte ou sur votre réseau local.
-categories: ['installation']
+category: docs
 permalink: /docs/install_local_rapide/
 ---
 

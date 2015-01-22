@@ -2,7 +2,7 @@
 layout: page-col
 title: Installation Raspberry Pi
 description: Installation complète de Bullit et d'une base de données MongoDB sur une Raspberry Pi
-categories: ['installation']
+category: docs
 permalink: /docs/raspberrypi/
 ---
 

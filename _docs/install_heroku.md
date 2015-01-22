@@ -2,7 +2,7 @@
 layout: page-col
 title: Installation manuelle Heroku
 description: Installation de Bullit sur un compte gratuit <a href="https://www.heroku.com/" target="_blank">Heroku</a> et utilisation du service <a href="https://mongolab.com/" target="_blank">MongoLab</a> pour gérer simplement et toujours gratuitement votre base de donnée MongoDB.
-categories: ['installation']
+category: docs
 permalink: /docs/install_heroku/
 ---
 

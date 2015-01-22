@@ -2,7 +2,7 @@
 layout: page-col
 title: Divers
 description: Commandes diverses
-categories: ['installation']
+category: docs
 permalink: /docs/divers/
 ---
 

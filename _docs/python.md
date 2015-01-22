@@ -2,7 +2,7 @@
 layout: page-col
 title: Installer Python
 description: 
-categories: ['installation']
+category: docs
 permalink: /docs/python/
 ---
 

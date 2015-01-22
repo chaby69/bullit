@@ -2,7 +2,7 @@
 layout: page-col
 title: Captation SMS
 description: Solutions possibles pour publier des SMS sur Bullit 
-categories: ['installation']
+category: docs
 permalink: /docs/grabbers/
 ---
 

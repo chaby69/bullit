@@ -2,7 +2,7 @@
 layout: page-col
 title: MongoDB
 description: 
-categories: ['installation']
+category: docs
 permalink: /docs/mongodb/
 ---
 

@@ -2,7 +2,7 @@
 layout: page-col
 title: Ecrans et devices
 description: Pilotage des écrans et appareils connectés 
-categories: ['utilisation']
+category: docs
 permalink: /docs/devices/
 ---
 

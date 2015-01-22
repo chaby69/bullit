@@ -2,7 +2,7 @@
 layout: page-col
 title: Mode Designer
 description: Outils pour les Thèmes - installation de NodeJs, NPM, Grunt, PhantomJS, Less
-categories: ['installation']
+category: docs
 permalink: /docs/frontend/
 ---
 

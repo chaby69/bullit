@@ -2,7 +2,7 @@
 layout: page-col
 title: Installation locale pour Foreman
 description: L'intérêt de Foreman est de faire tourner votre application dans le même contexte que lorsqu'elle sera hébergée sur les serveurs d'Heroku
-categories: ['installation']
+category: docs
 permalink: /docs/install_foreman/
 ---
 

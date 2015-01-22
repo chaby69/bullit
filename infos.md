@@ -2,6 +2,7 @@
 layout: page-col
 title: Infos
 permalink: /infos/
+category: infos
 ---
 
 ## En deux mots
