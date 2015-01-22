@@ -23,7 +23,7 @@
         },
         "SERVER_CONFIG": {
             "description": "Configuration",
-            "value": "{'host':'<votre-application>.herokuapp.com','port':''}"
+            "value": '{"host":"<votre-application>.herokuapp.com","port":""}'
         },
         "API_KEY": {
             "description": "API_KEY de votre application Twitter",
