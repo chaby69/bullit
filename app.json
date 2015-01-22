@@ -12,18 +12,18 @@
             "generator": "secret"
         },
         "HEROKU": {
-            "value": 1
+            "value": "1"
         },
         "DEBUG": {
-            "value": true
+            "value": "True"
         },
         "DESIGNER": {
             "description": "Activation du mode Desginer",
-            "value": true
+            "value": "True"
         },
         "SERVER_CONFIG": {
-            "description": "Configuration",
-            "value": "{\"host\":\"<votre-application>.herokuapp.com\",\"port\":\"\"}"
+            "description": "Configuration: remplacez <app-name> par le nom de votre application. Laissez le port vide.",
+            "value": "{\"host\":\"<app-name>.herokuapp.com\",\"port\":\"\"}"
         },
         "API_KEY": {
             "description": "API_KEY de votre application Twitter",
