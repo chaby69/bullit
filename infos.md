@@ -1,5 +1,5 @@
 ---
-layout: page-col-infos
+layout: page-col
 title: Infos
 permalink: /infos/
 category: infos
