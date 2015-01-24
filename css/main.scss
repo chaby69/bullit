@@ -3,11 +3,14 @@
 ---
 @charset "utf-8";
 
-
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,400italic,300);
 
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   15px;
+// $base-font-family: Helvetica, Arial, sans-serif;
+// $base-font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$base-font-family: 'Roboto', sans-serif;
+
+$base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
