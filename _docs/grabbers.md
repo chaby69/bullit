@@ -20,7 +20,7 @@ Après la décompression de l'archive et installation du fichier Bullit.23.apk s
 
 - L'app vous demandera de saisir le __PHONE_TOKEN__ que vous avez renseigné dans votre fichier de configuration
 - Ensuite, l'adresse du serveur où il devra envoyer les messages.
-- Et pour finir le numéro de téléphone de du mobile en question
+- Et pour finir le numéro de téléphone du mobile en question (totalement arbitraire mais il faut le faire :) )
 
 Il faudra aussi spécifier ce numéro de téléphone dans l'admin de Bullit pour au moins un de vos walls, sinon les SMS n'apparaitront nul part... 
 
@@ -35,13 +35,17 @@ Un téléphone mobile récent sous Android et l'achat de l'application Tasker (2
 
 [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm) est une application d'automatisation pour Android qui permet de lancer des actions sur le téléphone lors d'événement prédéterminés. Dans le cadre de Bullit nous allons créer un `profil` dans Tasker qui à la réception de chaque SMS sera en charge d'encoder le message et de le poster avec les autorisations nécessaires sur notre serveur Bullit.
 
+La clé __PHONE_TOKEN__ de votre fichier de configuration sera à renseigner dans la variable `%TOKEN` de la tâche Tasker
+
 @todo: tut à reprendre de l'actuel sms-wall
 
 ---
 
 ## Windows + clé 3G + SmsEnabler
 
-Pour autoriser votre clé 3G + SmsEnabler à poster les SMS reçus sur le serveur nous devons sécuriser un minimum la transaction en ajoutant un paramètre qui sera connu de vous seul, il s'agit de la clé `PHONE_TOKEN` de votre fichier de configuration
+@todo: tutorial du sms-wall à reprendre, toujours d'actualité
+
+La clé __PHONE_TOKEN__ de votre fichier de configuration sera à renseigner dans le champ `tag` dans les settings de SmsEnabler.
 
 
 ## Réception des SMS par le serveur

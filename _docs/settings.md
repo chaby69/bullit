@@ -38,15 +38,19 @@ Dans les 2 cas la valeur associée est un format standard qui devrait correspond
 mongodb://username:password@nomdedomaine:port/database
 {% endhighlight %}
 
-Par exemple, pour une installation locale de MongoDB configuré par défaut, `MONGODB_URI` vaudrait `mongodb://localhost:27017/smswall`
+Pour une installation locale de MongoDB par défaut, sans authentification, le schéma sera un peu différent, `MONGODB_URI` vaudrait `mongodb://localhost:27017/bullit`
 
 ---
 
 ## Grabber SMS - requis
 
+Pour autoriser [votre grabber]({{ "/docs/grabbers/" | prepend: site.baseurl }}) à envoyer les SMS reçus sur le serveur nous devons sécuriser un minimum la transaction en ajoutant un paramètre qui ne sera connu que du serveur et du grabber:
+
 `PHONE_TOKEN` 
 
-Il s'agit d'une clé que vous devrez personnaliser pour la rendre unique et qui permettra d'authentifier [le grabber SMS]({{ "/docs/grabbers/" | prepend: site.baseurl }})
+Il s'agit d'une clé que vous devrez personnaliser pour la rendre unique et qui permettra d'authentifier [le grabber SMS]({{ "/docs/grabbers/" | prepend: site.baseurl }}) auprès du serveur. 
+
+Lors d'une installation Heroku automatique, cette clé sera générée automatiquement par Heroku et vous devrez la reporter dans votre grabber.
 
 <a name="twitter"></a>
 

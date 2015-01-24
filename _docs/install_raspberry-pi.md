@@ -12,8 +12,7 @@ __Prérequis:__ `Raspberry Pi`
 {{ page.description }}
 </p>
 
-Téléchargement et flashage de la dernière Raspbian en suivant les tutoriaux officiels
-http://www.raspberrypi.org/documentation/installation/installing-images/README.md
+Téléchargement et flashage de la dernière Raspbian en suivant les tutoriaux officiels: <http://www.raspberrypi.org/documentation/installation/installing-images/README.md>
 
 Une fois la carte SD flashée vous pouvez l'insérer dans votre Raspberry Pi et alimenter l'engin pour la démarrer.
 
@@ -63,7 +62,7 @@ Sinon, création de clé : `ssh-keygen -t rsa -C pi@raspi`
 
 ## Installation de MongoDB
 
-L'installation manuelle sur une Raspberry Pi n'est pas des plus aisées, heureusement Mongo4Pi est là pour nous soulager d'un bon nombre de ligne de commande !
+L'installation manuelle sur une Raspberry Pi n'est pas des plus aisées, heureusement [Mongo4Pi](https://github.com/svvitale/mongo4pi.git) est là pour nous soulager d'un bon nombre de ligne de commande !
 
 Nous allons donc cloner ou télécharger mongo4pi puis lancer le script d'installation qui nous est offert:
 
