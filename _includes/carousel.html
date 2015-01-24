@@ -1,57 +1,76 @@
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="6000">
+<div id="carousel-scr" class="carousel slide" data-ride="carousel" data-interval="6000">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    <li data-target="#carousel-scr" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-scr" data-slide-to="1"></li>
+    <li data-target="#carousel-scr" data-slide-to="2"></li>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="http://img.bullit.io/screenshots/dashboard.png" alt="">
-      <div class="carousel-caption">
-        <p class="lead">Création rapide et simple de murs contributifs (Walls)</p>
-        <p>L'organisation en colonnes du Dashboard permet de piloter facilement plusieurs Walls simultanément</p>
-        <div class="bloc">
-          <ul class="smally">
-            <li>Affichez ou masquez vos walls dans l'admin au besoin</li>
-            <li>Recherches Twitter et numéro de téléphone pour les SMS indépendants pour chaque Wall</li>
-          </ul>
+    <div class="item active container">
+
+      <div class="row">
+        <div class="col-xs-6">
+          <img src="http://img.bullit.io/screenshots/dashboard.png" alt="">
+        </div>
+        <div class="col-xs-6">
+          <div class="carousel-caption">
+            <p class="lead">Le Dashboard - vue d'ensemble de vos walls</p>
+            <p>L'administration principale est organisée en colonnes pour piloter facilement plusieurs Walls simultanément.</p>
+            <div class="bloc visible-md visible-lg">
+              <ul class="smally">
+                <li>Twitter: Chaque wall peut afficher une recherche différente</li>
+                <li>SMS: Utilisez un n° unique pour tous vos walls ou associez un téléphone différent par wall</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
-    <div class="item">
-      <img src="http://img.bullit.io/screenshots/wall.png" alt="">
-      <div class="carousel-caption">
-        <p class="lead">Thèmes personnalisables pour chaque Wall public</p>
-        <div class="bloc">
-          <ul class="smally">
-            <li>édition depuis le navigateur avec mise à jour en temps réel des écrans connectés</li>
-            <li>édition manuelle: template HTML, CSS, LESS pour un controle total</li>
-            <li>export en cloud et partage (en cours)</li>
-          </ul>
+    <div class="item container">
+
+      <div class="row">
+        <div class="col-xs-6">
+          <img src="http://img.bullit.io/screenshots/wall.png" alt="">
         </div>
+        <div class="col-xs-6">
+          <div class="carousel-caption">
+            <p class="lead">Wall public - publication temps réel</p>
+            <p>De l'affichage des messages au choix du thème, vous pilotez en live vos différents écrans depuis l'admin.</p>
+            <div class="bloc visible-md visible-lg">
+              <ul class="smally">
+                <li>Modification des infos ou du thème d'un écran en pleine session</li>
+                <li>Mise en pause, messages informatifs, chaque wall est autonome</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      </div>
     </div>
-    <div class="item">
-      <img src="http://img.bullit.io/screenshots/modal_admin.png" alt="">
-      <div class="carousel-caption">
-        <p class="lead">Prévisualisation d'un lien intégré</p>
-        <p>Décompression automatique et recherche des contenus riches (photo, vidéo, ...) dans les messages</p>
+    <div class="item container">
 
+      <div class="row">
+        <div class="col-xs-6">
+          <img src="http://img.bullit.io/screenshots/modal_admin.png" alt="">
+        </div>
+        <div class="col-xs-6">
+          <div class="carousel-caption">
+            <p class="lead">Prévisualisation des médias intégrés</p>
+            <p>Prévisualisez et explorez les liens des messages sans quitter votre Dashboard</p>
+            <div class="bloc visible-md visible-lg">
+              <ul class="smally">
+                <li>Profitez d'<a href="http://embed.ly">Embed.ly</a> pour une exploration en profondeur du contenu des liens</li>
+                <li>Recherche des contenus riches (photo, vidéo, ...) dans les messages</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
-    <div class="item">
-      <img src="http://img.bullit.io/screenshots/modal_wall.png" alt="">
-      <div class="carousel-caption">
-        <p class="lead">Affichage des médias intégrés</p>
-        <p>Depuis le Dashboard, ouverture des médias ou messages dans des bulles</p>
-      </div>
-    </div>
-    
+
   </div>
-
 </div>

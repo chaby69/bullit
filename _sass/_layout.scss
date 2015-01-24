@@ -289,28 +289,31 @@ footer {
 
 
 .carousel {
-    height: 250px;
     padding: 0;
     .carousel-indicators {
         bottom: 0;
+        margin-bottom: 10px;
+        @media (min-width: $screen-md) {
+            left: 75%;
+        }
     }
     .carousel-inner {
-        height: 250px;
+        @media (min-width: $screen-sm) { height: 191px; }
+        @media (min-width: $screen-md) { height: 253px; }
+        @media (min-width: $screen-lg) { height: 308px; }
 
+        background-color: rgba(0,0,0,.15);
         & > .item, & > .item.active.left {
             width: 100%;
-            height: 250px;
             margin: 0;
             padding: 0;
-
-            & > img {
+            & .row > div {
+                @media (max-width: $screen-sm - 1) { width: 100%; }
+            }
+            & img {
                 width: auto;
-                float: left;
-                max-height: 250px;
-                border: 5px solid #eee;
                 margin: 0;
             }
-
             .carousel-caption {
                 bottom: 0;
                 color: #fff;
@@ -319,27 +322,30 @@ footer {
                 padding-top: 0;
                 position: relative;
                 right: 0;
-                // text-align: center;
                 text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
                 z-index: 10;
-                h2{
-                    margin-top: 15px;
-                }
-                p.lead {
-                    padding-top: 20px;
-                }
-                div.bloc {
-                    text-align: left;
-                    margin-left: 50%;
-                    ul.smally {
+
+                div > & {
+                    padding-right: 30px;
+                    @media (max-width: $screen-md) { 
                         font-size: 85%;
-                        color: #bbb;
-                        li {
-                            margin-left: 25px;
+                    }
+                    @media (min-width: $screen-lg) { 
+                        font-size: 110%;
+                    }
+                    h2{
+                        margin-top: 15px;
+                    }
+                    p.lead { padding-top: 20px; }
+                    div.bloc {
+                        text-align: left;
+                        ul.smally {
+                            margin-left: 15px;
+                            color: #bbb;
                         }
                     }
                 }
-
+                
             }
         }
 
