@@ -17,7 +17,7 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 {% assign current = page.url | downcase | split: '/' %}
-                <li {% if current | size == 0 or current[1] == 'post' %}class='active'{% endif %}><a href="{{ site.baseurl }}/">Blog</a></li>
+                <li {% if current[1] == 'index.html' or current[1] == 'post' %}class='active'{% endif %}><a href="{{ site.baseurl }}/">Accueil</a></li>
                 <li><a href="http://github.com/bullit-io/bullit" target="_blank">Téléchargement</a></li>
                 {% for page in site.pages %}
                   {% if page.title %}

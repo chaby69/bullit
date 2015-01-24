@@ -6,7 +6,7 @@ category: docs
 permalink: /docs/install_local_rapide/
 ---
 
-__Prérequis:__ `Git`, [`Python et Virtualenv`]({{ "/docs/python/" | prepend: site.baseurl }}), [`MongoDB`]({{ "/docs/mongodb/" | prepend: site.baseurl }})
+__Prérequis:__ [`Python et Virtualenv`]({{ "/docs/python/" | prepend: site.baseurl }}), [`MongoDB`]({{ "/docs/mongodb/" | prepend: site.baseurl }})
 
 <p class="bg-info-box">
 {{ page.description }}
