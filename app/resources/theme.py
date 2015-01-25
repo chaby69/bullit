@@ -50,6 +50,12 @@ def write_less_file(styles,theme):
 	des hooks de post déploiement sur Heroku mais on l'oublie pour la less/minification 
 	et la génération de screenshot via l'API
 	# local('grunt theme --theme=%s' % theme.identifier)
+
+	# FIXME:
+	# less n'est pas trouvé dans un process Supervisor
+	# Dans un Greenlet ou sans, le résultat est le meme
+	# /bin/sh: 1: lessc: not found
+	# pas de pb avec PhantomJs...
 	"""
 	
 	src = os.path.join(theme.path, 'less/styles.less')
@@ -91,7 +97,7 @@ def make_preview(url_param, theme, width, height):
 	# test subprocess
 	# return_call = subprocess.call(phantom_command, shell=True)
 
-	# test Gevent
+	# test Gevent (tient la route avec Supervisor)
 	# m = gevent.spawn(local, phantom_command)
 	g = Greenlet(local, phantom_command)
 	g.start()
