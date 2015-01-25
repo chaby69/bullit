@@ -120,31 +120,41 @@ a {
 	}
 }
 
-.modal-body {
-	padding: 0;
-	&.jumbotron {
-		margin-bottom: 0;
-		// background: url(../img/texture.comp.png) no-repeat scroll left top #fff;
-		// background-color: #fff;
-		background: @msg-bg;
-		border: @msg-border;
-		border-radius: @msg-radius;
-		border-radius: @msg-radius;
-		.media {
-			padding: 25px;
-			.media-body {
-				h3 {
-					font-size: 40px;
-					line-height: 1.8;
+.modal-dialog {
+	// background: url(../img/texture.comp.png) no-repeat scroll left top #fff;
+	background: @msg-bg;
+	border: 5px solid @brand-primary;
+	border-radius: @msg-radius * 2;
+	.modal-content {
+		background-color: transparent;
+		border: medium none;
+		.modal-body {
+			padding: 0;
+			&.jumbotron {
+				margin-bottom: 0;
+				background-color: transparent;
+				.media {
+					padding: 25px;
+					.media-body {
+						h3 {
+							font-size: 40px;
+							line-height: 1.2;
+							margin-bottom: 25px;
+						}
+						p {
+							font-size: 30px;
+							// color: #ddd;
+							color: lighten(@text-color, 10%);
+						}
+					}
 				}
-				p {
-					font-size: 34px;
-				}
+
 			}
 		}
-
 	}
 }
+
+
 
 
 
