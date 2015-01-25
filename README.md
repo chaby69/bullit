@@ -1,6 +1,6 @@
 # Bullit
 
-Bullit est un prototype qui permet d’afficher en temps réel des Tweets et SMS sur plusieurs écrans en live
+Bullit est un prototype qui permet d’afficher en temps réel des Tweets et SMS sur plusieurs écrans en simultané
 
 Le site et la documentation sont consultables à cette adresse: <http://doc.bullit.io>
 
