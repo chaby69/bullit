@@ -6729,9 +6729,6 @@ textarea.tarea:focus {
 .Dash > .row > #col-menu > .menu-content > .races-list ul li.racer:hover .racer-tools {
   opacity: 1;
 }
-.Dash > .row > #col-menu > .menu-content > .races-list ul li.racer .media-body {
-  display: list-item;
-}
 .Dash > .row > #col-menu > .menu-content > .races-list ul li.racer .media-body .racer-tools {
   opacity: 0.65;
 }
@@ -6918,7 +6915,6 @@ textarea.tarea:focus {
   color: #666;
 }
 .Feeder .messages ul .item-msg .media-body {
-  display: block;
   overflow: hidden;
 }
 .Feeder .messages ul .item-msg .media-body .content h4 {

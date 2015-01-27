@@ -637,13 +637,6 @@ fusionner ?
     height: auto;
 }
 
-/* Devices fix media-body */
-
-.container-devices .list-group-item .media-body {
-    display: block;
-}
-
-
 /* devices tools */
 .form-group.freeUrl {
     display: none;
