@@ -5,7 +5,7 @@ define(['marionette', 'underscore', 'text!Wall/modal/item-wall-modal.html'],
 
     var ModalView = Marionette.ItemView.extend({
         template: _.template(modalTemplate),
-        className: 'modal fade',
+        className: 'modal fade vertical-alignment-helper',
 
         ui: {
             Preselect: "#preselect",
