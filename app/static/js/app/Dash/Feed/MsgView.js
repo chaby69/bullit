@@ -1,6 +1,6 @@
-define( [ 'App', 'jquery', 'marionette', 'underscore', 'models/Embed', 'models/Item', 'Prefs/Dumbers/Model', 
+define( [ 'App', 'jquery', 'marionette', 'underscore', 'moment', 'models/Embed', 'models/Item', 'Prefs/Dumbers/Model', 
             'Modal/AdminLayout', 'text!Dash/Feed/msg.html'],
-    function( App, $, Marionette, _, Embed, Item, DumberModel, AdminLayout, itemTemplate) {
+    function( App, $, Marionette, _, moment, Embed, Item, DumberModel, AdminLayout, itemTemplate) {
 
         return Marionette.ItemView.extend( {
         // return Marionette.LayoutView.extend( {
@@ -29,7 +29,8 @@ define( [ 'App', 'jquery', 'marionette', 'underscore', 'models/Embed', 'models/I
             },
 
             onBeforeRender: function(){
-                // on touche le fond là, c'est n'importe quoi
+                this.model.set('ctime_str', moment(this.model.get('ctime')).format('ddd DD/MM HH:mm:ss'));
+                // toujours d'actualité, les fields de la resource sont pas fait pour les chiens pourtant
                 if(this.model.get('provider') == 'SMS'){
                     if(typeof(this.model.get('avatar')) == "undefined" || _.isNull(this.model.get('avatar'))){
                         this.model.set('avatar', '/static/img/avatar_default_sms.png');

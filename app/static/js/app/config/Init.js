@@ -45,7 +45,7 @@ require.config({
         // "nanoscroller":{ "deps": ["jquery"] },
         "marionette":{
             "deps":["underscore", "backbone", "backbone.wreqr", "backbone.babysitter", "backbone.chooser", 
-                    "backbone.syphon", "jquery", "embedly", "scrollTo", "moment", "moment.fr", "twitter-text"
+                    "backbone.syphon", "jquery", "embedly", "scrollTo", "moment.fr", "twitter-text"
                     // "nanoscroller"
                     , "spectrum"
                     ],

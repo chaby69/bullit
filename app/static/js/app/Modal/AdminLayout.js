@@ -1,6 +1,6 @@
 
-define( [ 'App', 'marionette', 'text!Modal/container-admin.html', 'Modal/model', 'text!Modal/body-item.html'],
-    function( App, Marionette, template, ModalModel, bodyModalTemplate) {
+define( [ 'App', 'marionette', 'moment', 'text!Modal/container-admin.html', 'Modal/model', 'text!Modal/body-item.html'],
+    function( App, Marionette, moment, template, ModalModel, bodyModalTemplate) {
 
         var BodyModalView = Marionette.ItemView.extend({
 
@@ -15,6 +15,7 @@ define( [ 'App', 'marionette', 'text!Modal/container-admin.html', 'Modal/model',
 
             // appel en cascade depuis le layout. Mime le cpt de WallView
             _onFinishRender: function(){
+                this.model.set('ctime_str', moment(this.model.get('ctime')).format('HH:mm:ss'));
                 var pre = this.model.get('preselec');
                 if(pre && pre.type == 'link'){
                     var links = this.model.get('links');

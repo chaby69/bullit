@@ -46,7 +46,7 @@
 			<% }else{ %>
 				<a href="javascript:void(0);"><%= author %></a><br/>
 			<% } %>
-			<small class="date"><%= moment(ctime).format('ddd DD/MM HH:mm:ss') %></small>
+			<small class="date"><%= ctime_str %></small>
 		</h4>
 		<div class="message-body"><%= message_html %></div>
 	</div>

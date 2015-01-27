@@ -1,5 +1,5 @@
 define(["jquery","backbone","moment","models/Item"],
-	function($, Backbone, Moment, Item) {
+	function($, Backbone, moment, Item) {
 
 		var ItemCollection = Backbone.Collection.extend({
 
@@ -11,8 +11,7 @@ define(["jquery","backbone","moment","models/Item"],
 			},
 
 			comparator: function(item){
-				// return item.get('ctime').$date;
-				return Moment(item.get('ctime'));
+				return moment(item.get('ctime'));
 			}
 
 		});

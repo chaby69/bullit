@@ -29,7 +29,7 @@ require.config({
         },
         "marionette":{
             "deps":["underscore", "backbone", "backbone.wreqr", "backbone.babysitter", 
-                    "jquery", "moment", "moment.fr", "twitter-text"],
+                    "jquery", "twitter-text"],
             "exports":"Marionette"
         },
         "socketio": {

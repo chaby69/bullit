@@ -1,8 +1,8 @@
 
-define(['Wall', 'marionette', 'underscore', "moment", "models/Item", "models/Race", "Wall/ItemWallView", "Wall/modal/WallView", 
+define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/ItemWallView", "Wall/modal/WallView", 
     "text!Wall/empty-view.html"],
 
-  function(App, Marionette, _, Moment, Item, Race, ItemWallView, ModalView, emptyTemplate) {
+  function(App, Marionette, _, Item, Race, ItemWallView, ModalView, emptyTemplate) {
     
     var NoItemsView = Marionette.ItemView.extend({
         template: _.template(emptyTemplate)
@@ -19,7 +19,7 @@ define(['Wall', 'marionette', 'underscore', "moment", "models/Item", "models/Rac
         author: "@Wall_Factory",
         preselec: {type: "", index: ""},
         avatar: "/static/img/logo-b_120.png",
-        ctime: new Moment(),
+        ctime: "",
     }
 
     var ItemCollectionView = Marionette.CollectionView.extend({

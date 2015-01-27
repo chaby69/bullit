@@ -6,6 +6,10 @@ class ObjId(fields.Raw):
     def format(self, value):
         return str( value )
 
+class formatDate(fields.DateTime):
+    def format(self, value):
+        return value.strftime("%Y-%m-%dT%H:%M:%SZ")
+
 # @info: sert aussi à marshaller les datas des events socket.io
 msg_race_flat = {
 	'_id': ObjId(attribute='_id'),
@@ -14,8 +18,7 @@ msg_race_flat = {
     'provider_user_id': fields.String,
     'author': fields.String,
     'message': fields.String,
-    # 'ctime': fields.DateTime,
-    'ctime': fields.String,
+    'ctime': formatDate(),
     'avatar': fields.String,
     'links': fields.Raw,
     'url_entities': fields.Raw,

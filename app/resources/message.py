@@ -22,6 +22,9 @@ class ObjId(fields.Raw):
     def format(self, value):
         return str( value )
 
+class formatDate(fields.DateTime):
+    def format(self, value):
+        return value.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 resource_fields = {
     '_id': ObjId(attribute='_id'),
@@ -30,7 +33,8 @@ resource_fields = {
     'provider_user_id': fields.String, # euh, on se fatiguerait pas pour rien avec un format spécial ailleurs ?
     'author': fields.String,
     'message': fields.String,
-    'ctime': fields.DateTime,
+    # 'ctime': fields.DateTime,
+    'ctime': formatDate(),
     'avatar': fields.String,
     'links': fields.Raw,
     'url_entities': fields.Raw,

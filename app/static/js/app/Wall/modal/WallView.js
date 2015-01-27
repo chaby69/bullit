@@ -1,7 +1,7 @@
 
-define(['marionette', 'underscore', 'text!Wall/modal/item-wall-modal.html'],
+define(['marionette', 'underscore', 'moment', 'text!Wall/modal/item-wall-modal.html'],
 
-  function(Marionette, _, modalTemplate) {
+  function(Marionette, _, moment, modalTemplate) {
 
     var ModalView = Marionette.ItemView.extend({
         template: _.template(modalTemplate),
@@ -16,7 +16,7 @@ define(['marionette', 'underscore', 'text!Wall/modal/item-wall-modal.html'],
         },
 
         initialize: function(options){
-
+            this.model.set('ctime_str', moment(this.model.get('ctime')).format('HH:mm:ss'));
             if(this.model.get('provider') == "SMS"){
                 this.model.set('author', "SMS");
             }
