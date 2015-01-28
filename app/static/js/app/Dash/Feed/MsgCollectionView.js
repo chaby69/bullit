@@ -111,7 +111,6 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
                 success: function(){
                     that.collection.sort();
                     that.collection.url = "/messages/"+that.race_id;
-                    console.log("fini de lire !");
                     // @todo: lancer le trigger après le rendu et pas après le fetch, sinon _is_loading repasse à false trop tot
                     // plutot que fetch, un deferred sur la collection avec un listenTo sur le 'render', comme dans DashController._initialContent()
                     // passer en param le nbr de rep ? 
@@ -122,7 +121,6 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
 
         // @FIXME ne doit plus marcher, maj Marionette 2.0.1
         onBeforeClose: function(){
-            console.log("onBeforeClose de MsgCollectionView");
             // ca vire des models au passage mais pas tous ... comprend po ...
             // @todo: comparer avec le onDestroy de FeedItemCollection qui tourne bien
             var that = this;
@@ -133,8 +131,6 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
 
         addItem: function(data){
             if(data.race_id == this.race_id){
-                // console.log("Ajout d'un item dans Race %o", this.race_id);
-                // console.log("la date: %o", data.ctime);
                 this.collection.add(data);
                 this.removeOld();
             }
@@ -147,7 +143,6 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
                 var diff = this.collection.length - max;
                 for(i=0; i<diff; i++){
                     var out = this.collection.shift();
-                    console.log("remove one: ", out);
                 }
             }
         },
@@ -156,7 +151,6 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
             // pénible ... comment faire sans en multirace/colonne
             // @todo: passer à du 'feed:visible:'+this.race_id si c'est pas trop bourrin
             if(data.race_id == this.race_id){
-                console.log("toggle visible de %o", data);
                 var msg = this.collection.get( data['_id']);
                 msg.set('visible', data['visible']);
             }
@@ -164,7 +158,6 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
 
         setStar: function(data){
             if(data.race_id == this.race_id){
-                console.log("toggle star de %o", data['_id']);
                 var msg = this.collection.get( data['_id']);
                 msg.set('stared', data['stared']);
             }
@@ -186,7 +179,6 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
             // listener qui reset tous les boutons bubble de la race au click sur 
             // le bouton général dans le Manager de la Race
             if(race_id == this.race_id){
-                console.log("c'est peut etre là que ca se passe ?");
                 var that = this;
                 this.children.each(function(msg){
                     that._unsetBtn(msg);
