@@ -36,6 +36,7 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
             
             this.listenTo(App.vent, 'feed:scrolling:'+this.race_id, this.scrollingState);
             this.listenTo(App.vent, 'dumber:added', this.removeDumberMsg);
+            this.listenTo(App.vent, 'remove:messages:'+this.race_id, this.removeMessages);
             // au click sur un bouton bubble, on désactive les autres
             this.on("childview:bubble:open", this.deactive_bubble);
             // au click cur un bouton de fermeture externe à la CV, on désactive
@@ -195,6 +196,7 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
         removeDumberMsg: function(dumber){
             // un peu trop bourrin
             // edit: on revient sur un fetch depuis le chiffrement des n° de phone
+            // @todo: ca peut se reprendre maintenant que le provider_user_id est de nouveau unique
             this.collection.fetch();
             // En bouclant sur la collec directement on se retrouve avec un 'item'
             // qui est en fait la collection de models. Pb dans le appendHtml avec le buffer ?
@@ -206,6 +208,20 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
             //         });
             //     }
             // })
+        },
+
+        removeMessages: function(){
+            var that = this;
+            Backbone.sync('delete', this.collection, {
+                success: function(data){
+                    console.log(data);
+                    that.collection.fetch({
+                        success: function(){
+                            App.vent.trigger('messages:removed');
+                        }
+                    });
+                }
+            });
         }
 
         

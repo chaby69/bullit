@@ -25,6 +25,7 @@ define([ 'App', 'marionette', 'underscore', 'models/Race', 'text!Dash/Feed/manag
                         btnVisible: '.btnVisible',
                         btnStared: '.btnStared',
                         menuRemoveRace: '.remove-race',
+                        removeMessages: '.remove-messages',
                     toolAlert: '.toolAlert',
                         bubbleCloser: '.bubbleCloser',
             },
@@ -57,6 +58,7 @@ define([ 'App', 'marionette', 'underscore', 'models/Race', 'text!Dash/Feed/manag
                 "click @ui.btnStared": "filterStared",
                 "click @ui.btnVisible": "toggleVisible",
                 "click @ui.menuRemoveRace": "removeRace",
+                "click @ui.removeMessages": "removeMessages",
 
                 "click @ui.bubbleCloser": "bubbleDestroy",
             },
@@ -199,6 +201,12 @@ define([ 'App', 'marionette', 'underscore', 'models/Race', 'text!Dash/Feed/manag
                 console.log("destroybubble via manager pour: %o", this.model.get('_id'));
                 App.socket.emit("bubble_send_destroy",this.model.get('_id'));
             },
+
+            removeMessages: function(){
+                if(confirm("Voulez-vous vraiment supprimer tous les messages de ce Wall ?\n Attention cette action est irréversible")){
+                    App.vent.trigger("remove:messages:"+this.model.get('_id'))
+                }
+            }
 
         });
     });

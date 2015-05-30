@@ -34,6 +34,7 @@ define(['App', 'marionette', 'underscore', "collections/RaceCollection", "Device
             this.listenTo(App.vent, 'race:added', this.addNewRace);
             this.listenTo(App.vent, "dumber:added", this.refetch);
             this.listenTo(App.vent, "dumber:removed", this.refetch);
+            this.listenTo(App.vent, "messages:removed", this.refetch);
 
         },
 

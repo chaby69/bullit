@@ -131,11 +131,38 @@ class MsgList(Resource):
 
         return marshal(msgs, msg_race_flat), 200
 
+    @login_required
+    def delete(self, race_id):
+        """
+        Suppression de tous les messages d'une Race
+        On ne supprime pas les messages directement mais la référence à la Race en cours dans la liste 'races' des messages
+        Si le message ne dépend que de la Race alors il est vraiment supprimé
+        """
+        msgs = list(messages.find({'races._id': ObjectId(race_id)}))
+        for m in msgs:
+            if len(m['races']) > 1:
+                m['races'] = [r for r in m['races'] if str(r['_id']) != race_id]
+                msg = messages.find_and_modify(query={"_id": m['_id']}, update={"$set": {"races": m['races'] }}, new=True)
+
+                for r in m['races']:
+                    # On propage la suppression du message dans ses propres Races encore référencées.
+                    # Pas de traitement pour les messages de la Race en cours de suppression qui aura son propre event
+                    shout_rooms = [race_id, 'play_%s' % race_id]
+                    msg_marshaled = marshal(msg, msg_race_flat)
+                    ShoutNamespace.broadcast_room(shout_rooms, "races_modified", msg_marshaled )
+
+            else:
+                messages.remove({'_id': m['_id']})
+
+        return {'removed': len(msgs)}
+
+
 
 
 def is_dumber(provider_user_id):
     # A surveiller de près, probable que cela ralentisse serieusement l'appli
     # si beaucoup de Sms postés et bcp de Dumbers en base...
+    # @todo: toujours sur bcrypt, à tester
     for d in list(dumbers.find({'provider': 'SMS'})):
         if bcrypt.hashpw(provider_user_id, d['provider_user_id']) == d['provider_user_id']:
             return d
