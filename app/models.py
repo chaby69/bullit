@@ -3,7 +3,8 @@ from app import db
 import pymongo
 from bson.objectid import ObjectId
 from datetime import datetime
-import bcrypt
+# import bcrypt
+from Crypto.Hash import MD5
 import urllib
 
 # on garde pymongo, etc pour le futur setRaces() des Sms
@@ -42,7 +43,8 @@ class SmsMsg(Message):
 		return "XXXXXXX%s" % self.provider_user_id[-3:]
 
 	def cryptPhone(self, nbr):
-		return bcrypt.hashpw(nbr, bcrypt.gensalt())
+		# return bcrypt.hashpw(nbr, bcrypt.gensalt())
+		return MD5.new(nbr).hexdigest()
 
 	def setRaces(self):
 		where = {'status': 'started'}
