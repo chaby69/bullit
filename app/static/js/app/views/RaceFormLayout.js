@@ -1,5 +1,5 @@
-define([ 'App', 'backbone', 'marionette', 'underscore', 'models/Race', 'text!templates/race-form.html'],
-    function (App, Backbone, Marionette, _, Race, tplFormRace) {
+define([ 'App', 'backbone', 'marionette', 'underscore', 'models/Race', 'collections/ItemCollection', 'text!templates/race-form.html'],
+    function (App, Backbone, Marionette, _, Race, ItemCollection, tplFormRace) {
 
         // return Marionette.ItemView.extend({
         return Marionette.LayoutView.extend({
@@ -13,7 +13,9 @@ define([ 'App', 'backbone', 'marionette', 'underscore', 'models/Race', 'text!tem
             },
 
             initialize: function(){
+                _.bindAll(this, 'removeMessages');
                 // collection par defaut du layout utilisée pour stocker la collec de Thèmes
+                // FIXME collection undefined
                 console.log("init du RaceFormLayout, model: %o | collectiob: %o", this.model, this.collection);
                 // console.log("ce model est %o", this.model.isNew());
                 this.model.set('is_new', this.model.isNew());
@@ -22,7 +24,9 @@ define([ 'App', 'backbone', 'marionette', 'underscore', 'models/Race', 'text!tem
             ui: {
                 fullFormRace: "#fullFormRace",
                 backDash: ".backDash",
-                submitFormRace: "#submitFormRace"
+                submitFormRace: "#submitFormRace",
+                removeMessages: '.remove-messages',
+                deleteWall: '.delete-wall',
             },
 
             modelEvents: {
@@ -31,6 +35,8 @@ define([ 'App', 'backbone', 'marionette', 'underscore', 'models/Race', 'text!tem
 
             events: {
                 "submit form": "onSubmitForm",
+                "click @ui.removeMessages": "removeMessages",
+                "click @ui.deleteWall": "deleteWall",
             },
             themeSelected: function(){
                 console.log("Nouveau Thème sélectionné");
@@ -58,7 +64,43 @@ define([ 'App', 'backbone', 'marionette', 'underscore', 'models/Race', 'text!tem
                     // App.vent.trigger("race:add", that.model);
                 });
                 
+            },
+
+            removeMessages: function(){
+                // @todo: ca devrait etre une commande, ou au moins une méthode sync sur la collection
+                // on retrouve ça dans Dash.Feed.MsgCollectionView
+                if(confirm("Voulez-vous vraiment supprimer tous les messages de ce Wall ?\n Attention cette action est irréversible")){
+                    var that = this;
+                    var collec = new ItemCollection();
+                    console.log(this.model.get('_id'));
+                    collec.url = collec.url(this.model.get('_id'), '');
+                    Backbone.sync('delete', collec, {
+                        success: function(data){
+                            App.vent.trigger('messages:removed');
+                        }
+                    });
+                }
+            },
+
+            deleteWall: function(){
+                if(confirm("Voulez-vous vraiment supprimer ce Wall et tous ses messages ?\n Attention cette action est irréversible")){
+                    this.model.destroy({
+                        success: function(model, response){
+                            App.vent.trigger('race:removed');
+
+                            App.vent.trigger("stream:restart:required", {action: "Race destroy demand"});
+
+                            App.Main.races.fetch({
+                                success: function(model, resp){
+                                    App.appRouter.navigate('/', true);
+                                }
+                            })
+                        }
+                    });
+                }
             }
+
+
 
         });
     });

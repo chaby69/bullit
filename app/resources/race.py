@@ -8,6 +8,8 @@ from app import app, db
 from datetime import datetime
 import re
 
+from app.resources.message import MsgList
+
 race_default = app.config['PUBLIC_CONFIG']
 
 races = db['races']
@@ -139,6 +141,8 @@ class Race(Resource):
 	@login_required
 	def delete(self, race_id):
 	    race = get_race_or_abort(race_id)
+	    msglist = MsgList()
+	    msgs = msglist.delete(race_id)
 	    races.remove({'_id': ObjectId(race_id)})
 	    return '', 204
 

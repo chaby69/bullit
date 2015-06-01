@@ -63,6 +63,7 @@ define([ 'App', 'marionette', 'underscore', 'text!Header/header.html'],
 
                 this.model.set(data);
                 // Sans déconner ... c pas bo ca
+                // FIXME et surtout ca ne marche pas
                 if(this.model.get('status') == "started"){
                     this.ui.streamStateLabel.text('');
                     $(this.ui.btnStopStream).addClass('btn-success').removeClass('btn-danger disabled');

@@ -59,3 +59,18 @@
         </form>
     </div>
 </div>
+
+<% if(!is_new){ %>
+<h3 class="sub-title">Suppression</h3>
+
+<div class="section">
+    <div class="section-content">
+        <p>Les messages présents sur plusieurs Walls simultanément ne seront supprimés que pour ce Wall</p>
+        <a href="javascript://void(0);" class="remove-messages btn btn-default"><span class="glyphicon glyphicon-trash"></span> Supprimer les messages</a>
+        <hr/>
+        <p>Suppression du Wall et de tous les messages associés. Comme précédement, les messages présents sur plusieurs Walls simultanément ne seront supprimés que pour ce Wall</p>
+        <a href="javascript://void(0);" class="delete-wall btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Supprimer le Wall et tous les messages associés</a>
+    </div>
+</div>
+<% } %>
+
