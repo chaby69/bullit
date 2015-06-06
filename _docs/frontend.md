@@ -54,12 +54,13 @@ $ npm install -g bower
 
 __Install des deps pour Grunt__
 {% highlight bash %}
-~/socket-wall $ npm install
+~ $ cd bullit
+~/bullit $ npm install
 {% endhighlight %}
 
 __Installe les paquets complets pour l'appli puis filtre et extrait les sources utiles__
 {% highlight bash %}
-~/socket-wall $ grunt install
+~/bullit $ grunt install
 {% endhighlight %}
 
 ---

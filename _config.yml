@@ -6,7 +6,8 @@ description: > # description
   écrans, TV et objets connectés (ChromeCast, Sparkio, ...).
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://doc.bullit.io" # the base hostname & protocol for your site
-twitter_username: dweez
+twitter_author: dweez
+twitter_username: bullit_io
 github_username: bullit-io
 
 # Build settings
