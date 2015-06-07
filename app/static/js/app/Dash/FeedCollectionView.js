@@ -101,63 +101,74 @@ define(['App', 'marionette', 'underscore', "models/Race", "Dash/Feed/Layout", "D
             // this.resizeHandler();
         },
 
-        // The default implementation:
+
         attachHtml: function(collectionView, childView, index){
-            // this._calcDashWidth();
             if (collectionView.isBuffering) {
-                console.log("buffering...");
-                // buffering happens on reset events and initial renders
-                // in order to reduce the number of inserts into the
-                // document, which are expensive.
-                collectionView.elBuffer.appendChild(childView.el);
-            }
-            else {
-                // If we've already rendered the main collection, just
-                // append the new children directly into the element.
+                collectionView._bufferedChildren.push(childView);
+            }else{
+                if(childView.model.get('status') == "new"){
+                    // @todo: passer en transition css
+                    collectionView.$el.prepend(childView.$el.hide());
+                    if(!collectionView._is_scrolling){
 
-                console.log("start attach in %o de %o", index, collectionView.collection.length);
-                // this.resizeHandler();
-                // this._calcDashWidth(300);
-                this._calcDashWidth();
+                        var race_id = childView.model.get('race_id');
+                        childView.$el.slideDown("fast", function(){
+                            App.vent.trigger('feed:'+race_id+':item:added');
+                        });
+                    }
+                }else{
+                    this._calcDashWidth();
 
-                var that = this;
-                _.delay(function(){ 
-
-                    $("#DashBoard").scrollTo((that.minwidth * 2) * (index + 1), 300);
-
+                    var that = this;
                     _.delay(function(){ 
 
-                        var newspan = (100 / collectionView.collection.length) + '%';
-                        _.each(collectionView.children._views, function(item){
-                            $(item.el).css({width: $(item.el).width() - 2});
-                            $(item.el).animate( {width: newspan, minWidth: that.minwidth+'px' }, 300 );
-                        });
-
-                        collectionView.$el.append( childView.el );
-                        // $(".col-sm-x:eq("+childView.model.get('order')+")", collectionView.$el).after(childView.el);
-                        $(childView.el).hide();
+                        $("#DashBoard").scrollTo((that.minwidth * 2) * (index + 1), 300);
 
                         _.delay(function(){ 
-                            // collectionView.$el.append(childView.el); 
-                            $(childView.el).fadeIn();
-                            that.resizeHandler();
+
+                            var newspan = (100 / collectionView.collection.length) + '%';
+                            _.each(collectionView.children._views, function(item){
+                                $(item.el).css({width: $(item.el).width() - 2});
+                                $(item.el).animate( {width: newspan, minWidth: that.minwidth+'px' }, 300 );
+                            });
+
+                            collectionView.$el.append( childView.el );
+                            // $(".col-sm-x:eq("+childView.model.get('order')+")", collectionView.$el).after(childView.el);
+                            $(childView.el).hide();
+
+                            _.delay(function(){ 
+                                // collectionView.$el.append(childView.el); 
+                                $(childView.el).fadeIn();
+                                that.resizeHandler();
+                            }, 350);
+
                         }, 350);
 
                     }, 350);
 
-                }, 350);
+                }
             }
         },
 
         // Called after all children have been appended into the elBuffer
-        appendHtml: function(collectionView, buffer){
-            collectionView.$el.append(buffer);
+        attachBuffer: function(collectionView) {
+            collectionView.$el.append(this._createBuffer(collectionView));
         },
 
-        // called on initialize and after appendHtml is called
+        // called on initialize and after attachBuffer is called
         initRenderBuffer: function() {
-          this.elBuffer = document.createDocumentFragment();
+            // this.elBuffer = document.createDocumentFragment();
+            this._bufferedChildren = [];
         },
+
+
+
+
+
+
+
+
+
 
         _removeRaceCol: function(raceid){
             console.log("collec avant le remove %o", this.collection);

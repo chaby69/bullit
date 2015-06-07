@@ -54,18 +54,15 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
 
         attachHtml: function(collectionView, childView, index){
             if (collectionView.isBuffering) {
-              // buffering happens on reset events and initial renders in order to reduce 
-              // the number of inserts into the document, which are expensive.
-              if(childView.model.get('status') == "new"){
-                collectionView.elBuffer.appendChild(childView.el);
-              }else{
-                collectionView.elBuffer.insertBefore(childView.el, collectionView.elBuffer.firstChild);
-              }
-            }
-            else {
+                // pas sur de l'utilité de ce test, revient au meme
                 if(childView.model.get('status') == "new"){
-                    // @todo: sans effet de slide: moins bourin, tiens mieux la charge
-                    // envisager une bascule en fction de la fréquence des messages
+                    collectionView._bufferedChildren.push(childView);
+                }else{
+                    collectionView._bufferedChildren.splice(0, 0, childView);
+                }
+            }else{
+                if(childView.model.get('status') == "new"){
+                    // @todo: passer en transition css
                     collectionView.$el.prepend(childView.$el.hide());
                     if(!collectionView._is_scrolling){
 
@@ -83,16 +80,14 @@ define(['App', 'underscore', 'backbone', 'marionette', "collections/ItemCollecti
         },
 
         // Called after all children have been appended into the elBuffer
-        appendHtml: function(collectionView, buffer) {
-            collectionView.$el.prepend(buffer);
-            // if(!collectionView._is_scrolling){
-            //      childView.$el.show;
-            // }
+        attachBuffer: function(collectionView) {
+            collectionView.$el.append(this._createBuffer(collectionView));
         },
 
-        // called on initialize and after appendBuffer is called
+        // called on initialize and after attachBuffer is called
         initRenderBuffer: function() {
-            this.elBuffer = document.createDocumentFragment();
+            // this.elBuffer = document.createDocumentFragment();
+            this._bufferedChildren = [];
         },
 
         loadMoreMsg: function(){

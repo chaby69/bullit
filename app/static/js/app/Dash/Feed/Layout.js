@@ -65,11 +65,6 @@ define( [ 'App', 'marionette', 'underscore', 'models/Race', 'Dash/Feed/ManagerVi
                 // Un model doit toujours être passé en options
                 _.bindAll(this);
 
-                this.managerView = new ManagerView({model: this.model} );
-                this.cntrView = new counterView({model: this.model });
-                this.itmcollView = new MsgCollectionView({race_id: this.model.get('_id'), race: this.model });
-
-
                 this.listenTo(App.vent, 'feed:filtering:'+this.model.get('_id'), this.filterBy);
                 this.listenTo(App.vent, 'feed:more:end:'+this.model.get('_id'), function(){ 
                     this._is_loading = false;
@@ -79,9 +74,9 @@ define( [ 'App', 'marionette', 'underscore', 'models/Race', 'Dash/Feed/ManagerVi
 
             onRender: function(){
                 this.$el.css('width', this.options.larg);
-                this.Manager.show( this.managerView );
-                this.Counter.show( this.cntrView );
-                this.Feeder.show( this.itmcollView );
+                this.showChildView('Manager', new ManagerView({model: this.model} ) );
+                this.showChildView('Counter', new counterView({model: this.model }) );
+                this.showChildView('Feeder', new MsgCollectionView({race_id: this.model.get('_id'), race: this.model }) );
                 
                 // listener pour le scroll natif. le 'off' se fait dans le onDestroy du layout
                 $(this.Feeder.$el).on("scroll", this.feederScroll);
