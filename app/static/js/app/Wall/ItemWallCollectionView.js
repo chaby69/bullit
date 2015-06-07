@@ -65,9 +65,11 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
                 // in order to reduce the number of inserts into the
                 // document, which are expensive.
                 if(childView.model.get('status') == "new"){
-                  collectionView.elBuffer.appendChild(childView.el);
+                  // collectionView.elBuffer.appendChild(childView.el);
+                  collectionView._bufferedChildren.push(childView);
                 }else{
-                  collectionView.elBuffer.insertBefore(childView.el, collectionView.elBuffer.firstChild);
+                  // collectionView.elBuffer.insertBefore(childView.el, collectionView.elBuffer.firstChild);
+                  collectionView._bufferedChildren.splice(0, 0, childView);
                 }
             }
             else {
@@ -83,13 +85,14 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
         },
 
         // Called after all children have been appended into the elBuffer
-        appendHtml: function(collectionView, buffer) {
-            collectionView.$el.prepend(buffer);
+        attachBuffer: function(collectionView) {
+            collectionView.$el.append(this._createBuffer(collectionView));
         },
 
         // called on initialize and after appendBuffer is called
         initRenderBuffer: function() {
-            this.elBuffer = document.createDocumentFragment();
+            // this.elBuffer = document.createDocumentFragment();
+            this._bufferedChildren = [];
         },
 
         addItem: function(data){
