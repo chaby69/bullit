@@ -6,7 +6,8 @@ require.config({
         // Core Libraries
         "jquery":                   "../vendor/jquery.min",
         // LoDash remplace Underscore
-        "underscore":               "../vendor/lodash.compat.min",
+        // "underscore":               "../vendor/lodash.compat.min",
+        "underscore":               "../vendor/lodash.min",
         "backbone":                 "../vendor/backbone.min",
         "marionette":               "../vendor/backbone.marionette.min",
         "bootstrap":                "../vendor/bootstrap.min",
