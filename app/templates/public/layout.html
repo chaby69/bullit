@@ -22,7 +22,7 @@
     <script type="text/javascript" src="/static/js/vendor/require.min.js" data-main="/static/js/app/Wally/config.js"></script>
     {%- block js_link %}{% endblock -%}
 </head>
-<body id="body">
+<body>
 {%- with messages = get_flashed_messages(category_filter=["error"]) %}
     {% if messages %}
     <div class="container flashes">

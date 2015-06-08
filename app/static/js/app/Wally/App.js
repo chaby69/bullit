@@ -1,14 +1,22 @@
-define(['marionette','backbone','Wally/Router'],
-	function (Marionette, Backbone, Router) {
-		'use strict';
+define(['marionette', 'backbone'],
+	function (Marionette, Backbone) {
 
-		var App = new Marionette.Application({
+		if(!window.debugging){
+		    console = {};
+		    console.log = function(){};
+		}
 
-			initialize: function () {
-				new Router();
-			}
+		App = new Backbone.Marionette.Application({});
 
+		var RootView = Marionette.LayoutView.extend({
+		    el: 'body',
+		    regions: {
+		        main: "#main",
+		        visualPing: "#visualPing"
+		    }
 		});
+
+		App.rootView = new RootView();
 
 		App.on('start', function () {
 			Backbone.history.start();

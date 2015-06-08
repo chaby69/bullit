@@ -1,13 +1,13 @@
-define(['marionette','Wally/RegionManager'	],
-	function (Marionette, regionManager) {
-		'use strict';
+define(['marionette', 'Controller'],
+	function (Marionette, Controller) {
+
 		return Marionette.AppRouter.extend({
 
-			routes: {
-				'': function () {
-					regionManager.showIndex();
-				}
-			}
+			controller: new Controller(),
+
+			appRoutes: {
+				'': 'index'
+			},
 
 		});
-	})
+	});
