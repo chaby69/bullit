@@ -9,14 +9,13 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
     });
 
     var msg_pause = {
-        // @FIXME: pratiquement tout est en dur
-        // avatar générique ? author ???
+        // @todo: msg_pause à passer dans le model Race. 
+        // author, avatar pourrait venir d'un model 'Proprio' ?
         status: "new",
         visible: 1,
         prefs: {text: true, media: false, size: ""},
-        // message: "le wall est en pause ...", 
-        message: App.request('getPref','msg_pause'),
-        author: "@Wall_Factory",
+        message: 'message de pause',
+        author: "@bullit_io",
         preselec: {type: "", index: ""},
         avatar: "/static/img/logo-b_120.png",
         ctime: "",
@@ -31,9 +30,6 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
 
         initialize: function(options) {
             this.race = options.race;
-            
-            // @WIP: ne doit pas servir, commenté pour voir
-            // _.bindAll(this, "updateRace");
 
             this.childViewOptions = { current_race_id: this.race.get('_id') };
             this.listenTo(App.vent, 'race:updated:'+this.race.get('_id'), this.updateRace);
@@ -125,13 +121,11 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
             var bub = new ModalView({model: mod});
 
             // FIXME tweak juste pour bloquer l'affichage des bulles pour MobilActeurs
-            // @TODO: test à virer
             if($("#bubble").length){
                 App.modalRegion.show(bub);
             }
         },
 
-        // destroyBubble: function(data){
         destroyBubble: function(){
             if( App.modalRegion.currentView ){
                 $(App.modalRegion.currentView.$el).modal('hide');
@@ -145,9 +139,7 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
         },
 
         updateRace: function(data){
-            console.log("status race: %o", this.race.get('status'));
             this.race.set(data.race);
-            console.log("status race: %o", this.race.get('status'));
             if(this.race.hasChanged("status")) {
                 console.log("le status de la Race a changé");
             }
@@ -162,15 +154,16 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
         },
 
         setPauseRace: function(){
+            msg_pause['ctime'] = moment();
+            var msg = App.getOption('settings').msg_pause;
             // FIXME test sur #bubble: tweak juste pour bloquer l'affichage des bulles pour MobilActeurs
             if($("#bubble").length){
-                // msg_pause est défini au dessus, hors de la collection @todo: modeliser ca proprement ...
-                msg_pause['message_html'] = App.request('getPref','msg_pause');
+                msg_pause['message_html'] = msg;
                 var mod = new Item(msg_pause);
                 var bub = new ModalView({model: mod});
                 App.modalRegion.show(bub);
             }else{
-                msg_pause['message'] = App.request('getPref','msg_pause');
+                msg_pause['message'] = msg;
                 this.addItem(msg_pause);
             }
         },

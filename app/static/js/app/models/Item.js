@@ -9,7 +9,7 @@ define(["jquery", "backbone"],
             },
 
             initialize:function () {
-                if(_.isUndefined(this.get('message_html')) ){
+                if(_.isUndefined(this.get('message_html')) && !_.isUndefined(this.get('message'))){
                     var msg = twttr.txt.htmlEscape(this.get('message'));
                     var urls = this.get('url_entities');
                     var msg_html = twttr.txt.autoLink(msg, { urlEntities : urls });
