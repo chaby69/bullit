@@ -1,4 +1,4 @@
-define( [ 'Wall', 'marionette', 'underscore', 'moment', 'models/Item', 'text!Wall/item-wall.html'],
+define( [ 'Wall', 'marionette', 'underscore', 'moment', 'models/Item', 'text!Wall/Feed/msg.html'],
     function( App, Marionette, _, moment, Item, itemTemplate) {
 
         return Marionette.ItemView.extend( {

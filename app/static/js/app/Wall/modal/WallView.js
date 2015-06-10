@@ -1,7 +1,7 @@
 
-define(['marionette', 'underscore', 'moment', 'text!Wall/modal/item-wall-modal.html'],
+define(['Wall', 'marionette', 'underscore', 'moment', 'text!Wall/modal/item-wall-modal.html'],
 
-  function(Marionette, _, moment, modalTemplate) {
+  function(App, Marionette, _, moment, modalTemplate) {
 
     var ModalView = Marionette.ItemView.extend({
         template: _.template(modalTemplate),
@@ -73,6 +73,7 @@ define(['marionette', 'underscore', 'moment', 'text!Wall/modal/item-wall-modal.h
             }
             this.ui.modalDialog.removeClass('modal-lg').width( this.model.get('final_width') );
         	this.$el.modal('show');
+            // $(App.rootView.modalRegion.currentView.$el).modal('show');
         },
 
         // @verif: les self.close() sur les modales () (fermeture depuis le client) trigge sa fermeture au Dash ?

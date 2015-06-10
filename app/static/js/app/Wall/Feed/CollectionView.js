@@ -1,8 +1,8 @@
 
-define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/ItemWallView", "Wall/modal/WallView", 
-    "text!Wall/empty-view.html"],
+define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/Feed/MsgView", "Wall/modal/WallView", 
+    "text!Wall/Feed/empty.html"],
 
-  function(App, Marionette, _, Item, Race, ItemWallView, ModalView, emptyTemplate) {
+  function(App, Marionette, _, Item, Race, MsgView, ModalView, emptyTemplate) {
     
     var NoItemsView = Marionette.ItemView.extend({
         template: _.template(emptyTemplate)
@@ -23,7 +23,7 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
 
     var ItemCollectionView = Marionette.CollectionView.extend({
 
-        childView: ItemWallView,
+        childView: MsgView,
         emptyView: NoItemsView,
         tagName: 'ul',
         className: 'list-group media-list',
@@ -45,10 +45,12 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
         },
 
         onRender: function(){
-            if(this.race.get('status') == "stopped"){
-                this.setPauseRace();
-            }else{
-                this.destroyBubble();
+            if(!window.screenshot){     // pénible 
+                if(this.race.get('status') == "stopped"){
+                    this.setPauseRace();
+                }else{
+                    this.destroyBubble();
+                }
             }
         },
 
@@ -122,13 +124,17 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
 
             // FIXME tweak juste pour bloquer l'affichage des bulles pour MobilActeurs
             if($("#bubble").length){
-                App.modalRegion.show(bub);
+                console.log("ca open");
+                App.rootView.modalRegion.show(bub);
+                // App.modalRegion.show(bub);
             }
         },
 
         destroyBubble: function(){
-            if( App.modalRegion.currentView ){
-                $(App.modalRegion.currentView.$el).modal('hide');
+            if( App.rootView.modalRegion.currentView ){
+            // if( App.modalRegion.currentView ){
+                $(App.rootView.modalRegion.currentView.$el).modal('hide');
+                // $(App.modalRegion.currentView.$el).modal('hide');
             }
         },
 
@@ -161,7 +167,7 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
                 msg_pause['message_html'] = msg;
                 var mod = new Item(msg_pause);
                 var bub = new ModalView({model: mod});
-                App.modalRegion.show(bub);
+                App.rootView.modalRegion.show(bub);
             }else{
                 msg_pause['message'] = msg;
                 this.addItem(msg_pause);

@@ -21,6 +21,7 @@ define(['Wall', 'marionette', 'underscore'],
             onDestroy: function(){
                 // ne doit pas être indispensable
                 console.log("destroy du de l'infoView");
+                // WTF ?!!
                 $(window).off("resize", this.resizeHandler);
             },
 

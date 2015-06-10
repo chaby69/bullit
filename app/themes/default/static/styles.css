@@ -6467,3 +6467,6 @@ a:focus {
   display: table-cell;
   vertical-align: middle;
 }
+.modal-backdrop {
+  height: 100%;
+}
