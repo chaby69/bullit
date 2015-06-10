@@ -60,6 +60,7 @@ class Twitter(object):
 
 	def stop_stream(self):
 		if self.get_stream_started():
+			self.streamer.disconnect()
 			self.stream.kill()
 			ShoutNamespace.broadcast('stream-stop', {'status': 'stopped'} )
 			return True
