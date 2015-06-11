@@ -30,18 +30,18 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
 
         initialize: function(options) {
             this.race = options.race;
-
             this.childViewOptions = { current_race_id: this.race.get('_id') };
-            this.listenTo(App.vent, 'race:updated:'+this.race.get('_id'), this.updateRace);
 
-            this.listenTo(App.vent, 'feed:add', this.addItem);
-            this.listenTo(App.vent, 'feed:visible', this.setVisible);
-            this.listenTo(App.vent, 'feed:stared', this.setStar);
-            this.listenTo(App.vent, 'bubble:exec:open', this.openBubble);
-            this.listenTo(App.vent, 'bubble:exec:destroy', this.destroyBubble);
+            var globalCh = Backbone.Wreqr.radio.channel('global');
 
-            this.listenTo(App.vent, 'dumber:added', this.refetch);
-            this.listenTo(App.vent, 'dumber:removed', this.refetch);
+            globalCh.vent.on('race:updated:'+this.race.get('_id'), this.updateRace, this);
+            globalCh.vent.on('feed:add', this.addItem, this);
+            globalCh.vent.on('feed:visible', this.setVisible, this);
+            globalCh.vent.on('feed:stared', this.setStar, this);
+            globalCh.vent.on('bubble:exec:open', this.openBubble, this);
+            globalCh.vent.on('bubble:exec:destroy', this.destroyBubble, this);
+            globalCh.vent.on('dumber:added', this.refetch, this);
+            globalCh.vent.on('dumber:removed', this.refetch, this);
         },
 
         onRender: function(){
@@ -63,11 +63,9 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
                 // in order to reduce the number of inserts into the
                 // document, which are expensive.
                 if(childView.model.get('status') == "new"){
-                  // collectionView.elBuffer.appendChild(childView.el);
-                  collectionView._bufferedChildren.push(childView);
+                    collectionView._bufferedChildren.push(childView);
                 }else{
-                  // collectionView.elBuffer.insertBefore(childView.el, collectionView.elBuffer.firstChild);
-                  collectionView._bufferedChildren.splice(0, 0, childView);
+                    collectionView._bufferedChildren.splice(0, 0, childView);
                 }
             }
             else {
@@ -124,17 +122,13 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
 
             // FIXME tweak juste pour bloquer l'affichage des bulles pour MobilActeurs
             if($("#bubble").length){
-                console.log("ca open");
                 App.rootView.modalRegion.show(bub);
-                // App.modalRegion.show(bub);
             }
         },
 
         destroyBubble: function(){
             if( App.rootView.modalRegion.currentView ){
-            // if( App.modalRegion.currentView ){
                 $(App.rootView.modalRegion.currentView.$el).modal('hide');
-                // $(App.modalRegion.currentView.$el).modal('hide');
             }
         },
 
@@ -144,6 +138,7 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
             msg.set('stared', data['stared']);
         },
 
+        // FIXME move to Controller
         updateRace: function(data){
             this.race.set(data.race);
             if(this.race.hasChanged("status")) {
@@ -152,13 +147,14 @@ define(['Wall', 'marionette', 'underscore', "models/Item", "models/Race", "Wall/
             if(this.race.get('status') == "stopped"){
                 this.setPauseRace();
             }else{
-                
+                // FIXME tweak juste pour bloquer l'affichage des bulles pour MobilActeurs
                 if($("#bubble").length){
                     this.destroyBubble();
                 }
             }
         },
 
+        // FIXME move to Controller
         setPauseRace: function(){
             msg_pause['ctime'] = moment();
             var msg = App.getOption('settings').msg_pause;

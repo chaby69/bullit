@@ -24,7 +24,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'options', 'Wall/sio',
 		
 		App.on('start', function (options) {
 			if(!window.screenshot){
-				App.sck = new sio(App);
+				App.sck = new sio();
 			}
 			Backbone.history.start();
 		});

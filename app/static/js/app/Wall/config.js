@@ -53,8 +53,8 @@ require(['Wall', 'options', 'Wall/Router', 'Wall/Controller', 'jquery', 'bootstr
 
 		App.options = options;
 		App.appRouter = new Router({
-			controller: new Controller()
+			controller: new Controller(options)
 		});
-		App.start();
+		App.start(options);
 
 	});

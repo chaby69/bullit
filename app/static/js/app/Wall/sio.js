@@ -1,6 +1,6 @@
 
-define(['marionette','underscore','socketio'], 
-    function(Marionette, _, io) {
+define(['backbone', 'marionette','underscore','socketio'], 
+    function(Backbone, Marionette, _, io) {
 
         var socket_callbacks = [
             ['connect','socket:connected'],
@@ -21,25 +21,26 @@ define(['marionette','underscore','socketio'],
         ];
 
         var sck = Marionette.Object.extend({
-            initialize: function(App){
+            initialize: function(){
                 this.socketUrl = "/shouts";
                 this.socket = io.connect(this.socketUrl);
+                var globalCh = Backbone.Wreqr.radio.channel('global');
                 var that = this;
                 _.each(socket_callbacks,function(signal){
                     that.socket.on(signal[0], function(data) {
                         if (typeof(data) != "undefined") {
                             console.log('trigger %s | %o',signal[1],data);
-                            App.vent.trigger(signal[1],data);
+                            globalCh.vent.trigger(signal[1],data);
                         } else {
                             console.log('trigger %s',signal[1]);
-                            App.vent.trigger(signal[1]);
+                            globalCh.vent.trigger(signal[1]);
                         }
                     });
                 });
-                // event avec race_id dynamique en suffixe, traitement à part
+
                 this.socket.on('race_updated', function(data){
                     console.log("Race modifiée: %o", data['race']);
-                    App.vent.trigger("race:updated:"+data.race._id, data);
+                    globalCh.vent.trigger("race:updated:"+data.race._id, data);
                 });
 
                 window.onbeforeunload = function(){
