@@ -61,7 +61,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'socketio', 'Modal/Reg
 
     App.themesnav = [
         {name: 'list', label: 'Bibliothèque', url: '#themes/list'},
-        {name: 'edit', label: 'Edition', url: '#themes/edit'}
+        // {name: 'edit', label: 'Edition', url: '#themes/edit'}
     ];
 
     function isMobile() {
