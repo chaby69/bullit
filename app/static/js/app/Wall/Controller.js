@@ -22,9 +22,12 @@ define(['Wall', 'backbone', 'marionette', 'Wall/LayoutWall', 'Wall/Ping/PingView
 				}, this);
 
 				globalCh.vent.on('race:updated:'+this.current_race, this.updateRace, this);
+			index: function(){
+				console.log("pas de route côté serveur");
 			},
 			
-			index: function () {
+			wall: function (race_id) {
+				console.log("du coup on a: ", race_id);
 				var layout = new LayoutWall({race_id: this.current_race});
 				App.rootView.main.show(layout);
 			},

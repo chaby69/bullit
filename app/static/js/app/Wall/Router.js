@@ -3,7 +3,8 @@ define(['marionette'],
 		return Marionette.AppRouter.extend({
 
 			appRoutes: {
-				'': 'index'
+				'': 'index',
+				'wall/:id/': 'wall'
 			},
 
 		});

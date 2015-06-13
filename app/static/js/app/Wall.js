@@ -26,7 +26,7 @@ define(['jquery', 'backbone', 'marionette', 'underscore', 'options', 'Wall/sio',
 			if(!window.screenshot){
 				App.sck = new sio();
 			}
-			Backbone.history.start();
+			Backbone.history.start({ pushState: true }, root= '/');
 		});
 
 		return App;
