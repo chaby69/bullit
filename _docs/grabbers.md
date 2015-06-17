@@ -10,53 +10,66 @@ permalink: /docs/grabbers/
 Sont regroupées ici des solutions connues et testées pour recevoir des SMS et les envoyer au serveur Bullit
 </p>
 
-## Android + Bullit SMS (version alpha !)
+## Bullit SMS (Android)
 
-Réalisé avec Tasker, Bullit SMS est une appli Android minimale qui une fois installée écoutera en permanence l'arrivée de nouveau SMS et les enverra instantanément à votre serveur Bullit
+<img src="http://img.bullit.io/screenshots/bullit-sms_200.png" class="img-responsive pull-left" style="margin-right: 15px;" />
 
-[Téléchargez Bullit SMS](http://www.sms-wall.org/wp-content/uploads/2014/12/Bullit.23.apk_.zip)
+Bullit SMS est une petite application pour Android gratuite qui vous permet de capter les SMS envoyés par vos utilisateurs.
 
-Après la décompression de l'archive et installation du fichier Bullit.23.apk sur votre téléphone, envoyez-vous un premier SMS pour lancer la configuration:
+Pour l'installer, le plus simple est de vous rendre à l'adresse suivante avec votre mobile en ayant préalablement autorisé le téléchargement et l'installation de sources externes :
 
-- L'app vous demandera de saisir le __PHONE_TOKEN__ que vous avez renseigné dans votre fichier de configuration
-- Ensuite, l'adresse du serveur où il devra envoyer les messages.
-- Et pour finir le numéro de téléphone du mobile en question (totalement arbitraire mais il faut le faire :) )
+[Télécharger Bullit SMS](http://img.bullit.io/apk/bullit.66.apk)
 
-Il faudra aussi spécifier ce numéro de téléphone dans l'admin de Bullit pour au moins un de vos walls, sinon les SMS n'apparaitront nul part... 
+L'installation devrait se faire sans douleur. Une fois installée et démarrée vous devriez voir apparaître l'interface ci-contre.
 
-__Mise en garde:__ Cette application est plus un test qu'autre chose ! Il n'y a pas d'interface sur le téléphone, pas de notification, pas de bouton start/stop, rien :) Ce n'est qu'un processus qui est lancé en tache de fond et que vous ne voyez pas ... Il faudra donc manuellement stopper ce processus dans le gestionnaire d'application de votre mobile pour arreter la captation de SMS.
+<hr/>
+
+### Configuration
+
+L'interface vous propose 3 champs que vous devrez renseigner avant de pouvoir lancer la captation
+
+- __N° Phone__
+
+    Ce paramètre est optionnel. Il agit comme un filtre et permet de cibler le wall sur lequel vous désirez envoyer les messages. Il correspond au n° de téléphone du mobile que vous utilisez.
+
+    Si vous ne le spécifiez pas, les SMS reçus seront postés sur tous vos walls même si vous avez indiqué un N° de téléphone pour un de vos walls dans l'admin.
+
+    Par contre, si vous indiquez un numéro dans Bullit SMS ainsi que dans la configuration d'un de vos walls alors les SMS ne seront reçus que sur ce dernier.
+
+    Cela permet d'avoir plusieurs n° de téléphone pointant sur différents walls à peu de frais.
+
+- __host:port__
+
+    Il s'agit de l'adresse du serveur de votre installation.
+
+    Pour une installation sur Heroku ou sur un serveur disposant d'un nom de domaine vous pourrez saisir ce dernier sans vous préoccuper du port: `monbullit.herokuapp.com`
+
+    Pour une installation locale vous indiquerez une adresse du type : `192.168.0.1:8080`. L'adresse de votre serveur doit pour cela [être accessible sur le réseau](#config)
+
+
+- __Token__
+
+    Ce paramètre sert à sécuriser la communication entre votre téléphone mobile et le serveur. Il vous faudra le faire correspondre au token que vous aurez au préalable ajouté dans votre fichier de configuration sous l’appellation __PHONE_TOKEN__
+
+Une fois ces paramètres renseignés, vous pouvez lancer le grabber en tapant sur le gros bouton ON/OFF et en envoyant un premier SMS de test
+
+Tout en bas, vous disposez d'un compteur qui s'incrémentera tout au long de votre session. Vous pouvez le remettre à zéro quand vous le désirez en appuyant sur le petit bouton à sa droite.
+
+
+
 
 
 ---
 
-## Android + Tasker
-
-Un téléphone mobile récent sous Android et l'achat de l'application Tasker (2.99€) sont les seules contraintes techniques pour cette méthode. 
-
-[Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm) est une application d'automatisation pour Android qui permet de lancer des actions sur le téléphone lors d'événement prédéterminés. Dans le cadre de Bullit nous allons créer un `profil` dans Tasker qui à la réception de chaque SMS sera en charge d'encoder le message et de le poster avec les autorisations nécessaires sur notre serveur Bullit.
-
-La clé __PHONE_TOKEN__ de votre fichier de configuration sera à renseigner dans la variable `%TOKEN` de la tâche Tasker
-
-@todo: tut à reprendre de l'actuel sms-wall
-
----
-
-## Windows + clé 3G + SmsEnabler
-
-@todo: tutorial du sms-wall à reprendre, toujours d'actualité
-
-La clé __PHONE_TOKEN__ de votre fichier de configuration sera à renseigner dans le champ `tag` dans les settings de SmsEnabler.
-
-
-## Réception des SMS par le serveur
-
+# Réception des SMS par le serveur
+<a name="config"></a>
 Pour pouvoir recevoir des SMS l'adresse IP du serveur de votre application doit être accessible depuis une autre machine (LAN, serveur distant, Heroku, ...) Le grabber, quel qu'il soit, doit être en mesure d'envoyer les SMS reçus au serveur, cela ne pourra donc pas marcher avec une adresse IP du type `127.0.0.1`
 
-Pour tester en local avec Wekzeug, vous devrez passer des paramètres au lanceur `run.py` et spécifier l'adresse IP et le port que vous désirez utiliser:
+Pour tester en local avec Werkzeug, vous devrez passer des paramètres au lanceur `run.py` et spécifier l'adresse IP et le port que vous désirez utiliser:
 
-```
+{% highlight bash %}
 (env) ~/bullit $ python run.py -b 192.168.0.11
-```
+{% endhighlight %}
 
 N'oubliez pas d'adapter le paramètre `__SERVER_CONFIG__` dans votre fichier de configuration en conséquence.
 
