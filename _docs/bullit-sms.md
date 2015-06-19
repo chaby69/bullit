@@ -14,7 +14,7 @@ Bullit SMS est une petite application pour Android gratuite qui vous permet de c
 
 Pour l'installer, le plus simple est de vous rendre à l'adresse suivante avec votre mobile en ayant préalablement autorisé le téléchargement et l'installation de sources externes :
 
-[Télécharger Bullit SMS](http://img.bullit.io/apk/Bullit.66.apk)
+<a href="http://img.bullit.io/apk/Bullit.66.apk" class="btn btn-warning"><span class="glyphicon glyphicon-download-alt"></span> Télécharger Bullit SMS</a>
 
 L'installation devrait se faire sans douleur. Une fois installée et démarrée vous devriez voir apparaître l'interface ci-contre.
 
