@@ -7,17 +7,18 @@ category: docs
 
 <div class="home">
 
-	<div class="bg-alert-box row">
-		<div class="col-sm-8 col-xs-12">
-			Installation complète en moins de 10 minutes avec <a href="https://heroku.com/deploy?template=https://github.com/bullit-io/bullit" target="_blank">Heroku</a>
-			<p class="detail">Carte bleue requise mais non débitée.</p>
-		</div>
-		<div class="col-sm-4 col-xs-12">
-			<a href="https://heroku.com/deploy?template=https://github.com/bullit-io/bullit" target="_blank"><img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy"></a>
-		</div>
-	</div>
+	{% include _docs/heroku_1_click.html %}
 	
 	<hr/>
+	<h2 class="page-heading">Bienvenue sur la documentation de Bullit</h2>
+
+	<p>Vous trouverez ici les ressources nécessaires à l'installation d'un serveur Bullit ainsi qu'à la mise en place d'un système de captation de SMS. Bien entendu, toouuus les tutoriaux présents sur cette page ne sont pas à suivre un par un, dans l'ordre et sans exception. Choisissez le type d'installation qui vous convient le mieux en fonction du matériel dont vous disposez.</p>
+
+	<p>En théorie, Bullit fonctionne sans aucun compte Twitter ou grabber de SMS configuré. Mais il faut avouer que l'intérêt de Bullit s'en ressent, hum... Vous pouvez commencer par <a href="" target="_blank">créer une application Twitter</a> et conservez les informations fournies pour pouvoir streamer des tweets. Cette app Twitter vous servira quelque soit le type d'installation choisie.</p>
+
+	<p>Le "Mode Designer" est purement optionnel, en version beta, et nécessite un certain nombre d'installations qui peuvent s'avérer délicate.</p>
+
+	<p>Pour l'instant, la prise en main et l'utilisation de Bullit n'est pratiquement pas abordée. Une rubrique dédiée devrait voir le jour sous peu.</p>
 	
 	{% for categorie in site.data.docs %}
 		<h2 class="page-heading">{{ categorie.title-long }}</h2>

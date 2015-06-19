@@ -4,10 +4,23 @@
   docs:
   - install_local_rapide
   - raspberrypi
-  - grabbers
   - frontend
-  - settings
-  - divers
+
+- title: Heroku
+  title-long: "Bullit sur Heroku"
+  desc: "Vous avez besoin d'un SmsWall dans les 5 minutes ? Le service d'hébergement en cloud Heroku est actuellement la manière la plus simple et rapide d'installer un Bullit."
+  docs:
+  - install_heroku_1_click
+  - install_heroku
+  - install_foreman
+
+- title: Captation SMS
+  title-long: "Captation des SMS"
+  desc: "Compte tenu de la popularité incontestable des SMS, leur affichage par Bullit facilite et démocratise son utilisation auprès du public. En fonction de votre équipement, de votre temps disponible ou de votre gout pour la bricole, plusieurs solutions s'offrent à vous."
+  docs:
+  - bullit-sms
+  - tasker
+  - smsenabler
 
 - title: Utilisation
   title-long: "Utilisation"
@@ -15,16 +28,11 @@
   docs:
   - devices
 
-- title: Heroku
-  title-long: "Bullit sur Heroku"
-  desc: "Vous avez besoin d'un SmsWall dans les 5 minutes ? Le service d'hébergement en cloud Heroku est actuellement la manière la plus simple et rapide d'installer un Bullit."
-  docs:
-  - install_heroku
-  - install_foreman
-
 - title: Annexes
   title-long: "Installations diverses"
-  desc: ""
+  desc: "Paramètres de configuration de Bullit, commandes utiles et installations diverses"
   docs:
+  - settings
+  - divers
   - python
   - mongodb

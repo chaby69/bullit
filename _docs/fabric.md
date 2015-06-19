@@ -1,7 +1,7 @@
 ---
 layout: page-col
-title: Divers
-description: Commandes diverses
+title: Commandes Fabric
+description: Quelques commandes utiles pour gérer Bullit
 category: docs
 permalink: /docs/divers/
 ---

@@ -1,10 +1,14 @@
 ---
 layout: page-col
-title: Installation manuelle Heroku
-description: Installation de Bullit sur un compte gratuit <a href="https://www.heroku.com/" target="_blank">Heroku</a> et utilisation du service <a href="https://mongolab.com/" target="_blank">MongoLab</a> pour gérer simplement et toujours gratuitement votre base de donnée MongoDB.
+title: Installation manuelle
+description: Si l'installation rapide Heroku vous laisse sur votre faim, voici un tutoriel pour mettre en place vous-même votre Bullit sur un compte gratuit <a href="https://www.heroku.com/" target="_blank">Heroku</a> et utiliser le service <a href="https://mongolab.com/" target="_blank">MongoLab</a> pour gérer simplement et toujours gratuitement votre base de donnée MongoDB.
 category: docs
 permalink: /docs/install_heroku/
 ---
+
+{% include _docs/heroku_1_click.html %}
+
+<hr/>
 
 __Prérequis:__ `Git`, `Toolbelt Heroku`
 
@@ -155,10 +159,5 @@ Vous pourrez suivre l'évolution de l'installation qui peut durer quelques minut
 
 ---
 
-
-### Idling 
-
-Après une heure d'inactivité, votre application Heroku se mettra en sommeil. C'est normal (<https://blog.heroku.com/archives/2013/6/20/app_sleeping_on_heroku>)
-
-Cela impacte actuellement les thèmes qui seront réinitialisés lorsque vous réveillerez votre application. Si vous avez édité votre thème lors de la session précédente il sera donc remis à zéro. Pour vous prémunir de cet effet indésirable vous pouvez vous tourner dans un premier temps vers des services comme Kaffeine (<https://blog.heroku.com/archives/2013/6/20/app_sleeping_on_heroku>) qui 'pingera' votre application à interval régulier.
+{% include _docs/idling.md %}
 

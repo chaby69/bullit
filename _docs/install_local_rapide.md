@@ -1,7 +1,7 @@
 ---
 layout: page-col
-title: Bullit en local
-description: Installation de Bullit pour une utilisation monoposte ou sur votre réseau local.
+title: Installation standard
+description: Installation de Bullit pour une utilisation monoposte ou sur votre réseau local. 
 category: docs
 permalink: /docs/install_local_rapide/
 ---

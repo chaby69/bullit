@@ -1,6 +1,6 @@
 ---
 layout: page-col
-title: Installer Python
+title: Python
 description: 
 category: docs
 permalink: /docs/python/

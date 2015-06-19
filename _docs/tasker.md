@@ -1,16 +1,16 @@
 ---
 layout: page-col
-title: Captation SMS - Tasker
-description: Captation de SMS 
+title: Tasker (Android)
+description: Tutoriel de création d'une tache Tasker (payant) de captation des SMS
 category: docs
-permalink: /docs/grabbers/tasker/
+permalink: /docs/tasker/
 ---
 
-<p class="bg-info-box">
-Ce tutorial vous permettra de mettre en place un ‘grabber’ de SMS à l’aide d’un téléphone sous Android et de l’application Tasker (Version pour Android >= 4.0).
-</p>
+__Prérequis:__ `mobile Android`, `CB`
 
-Vous pouvez aussi importer directement [grabber.xml](https://raw.githubusercontent.com/assobug/smswall/master/tasker/grabber.xml) dans Tasker et modifier les différents paramètres en fonction de votre utilisation.
+<p class="bg-info-box">
+Ce tutoriel vous permettra de mettre en place un ‘grabber’ de SMS à l’aide d’un téléphone sous Android et de l’application Tasker (Version pour Android >= 4.0).
+</p>
 
 ## Présentation de Tasker :
 
@@ -40,64 +40,36 @@ __Enfin, pour valider puis revenir à l’écran principal, cliquez sur le logo 
 
 Tasker vous invitera ensuite à choisir ou à créer une nouvelle Tâche. Nous allons donc choisir `Nouvelle tâche`, lui choisir un nom ( « Grabber » par exemple ) puis valider.
 
-Nous nous retrouvons sur un écran vierge où nous allons créer plusieurs actions qui seront exécutées à chaque réception de SMS.
+Nous nous retrouvons sur un écran vierge où nous allons créer une simple action qui sera exécutée à chaque réception de SMS. Cette action sera en charger d'envoyer le contenu du SMS reçu au serveur Bullit.
 
-<p class="bg-info-box">
-<strong>Note:</strong> nous décidons ici d’envoyer le contenu du message en GET sur une adresse http public dans le cadre d’une installation de type SmsWall. En fonction de votre utilisation, vos besoins ne seront pas forcément les mêmes, les actions seront différentes. N’hésitez pas à consulter la documentation et le wiki de Tasker en cas de besoin !
-</p>
+Tasker accède pour vous aux variables locales du système de votre téléphone. Parmi toutes celles que nous avons à notre disposition, nous utiliserons le contenu du dernier SMS reçu ainsi que le numéro de téléphone de l'expéditeur (ce dernier sera chiffré par Bullit).
 
-### 1 - Affectation de variable :
+__Commencez par créer une nouvelle action en cliquant sur le bouton `+` en bas de l’écran, puis :__
 
-Tasker accède pour vous aux variables locales du système de votre téléphone. La date, l’heure, l’état du téléphone ou bien encore le contenu du dernier SMS reçu sont donc disponible.
-
-Nous allons créer notre propre variable pour y stocker le corps du message contenu dans le SMS pour pouvoir par la suite l’utiliser à notre compte :
-
-Commencez par créer une nouvelle action en cliquant sur le bouton `+` en bas de l’écran, puis :
-
-- Choisissez la catégorie : `Variable`
-- Choisissez ensuite l’action à effectuer avec cette variable : `Affecter une variable`
-
-Dans la page d’édition de l’action :
-
-- Choisissez un nom. Celui-ci doit impérativement commencer par un %. Par exemple : `%BODY`
-- Dans le deuxième champ `A` nous allons choisir le contenu à affecter à notre variable. Vous pouvez cliquer sur l’icone à droite du champ pour choisir dans la liste complète de toutes les variables locales disponibles (La liste est longue …). Choisissez `Texte – Corps`. Le champ doit s’être automatiquement rempli avec la chaîne de caractère `%SMSRB`
-- Validez en cliquant sur le logo Tasker en haut à gauche
-
-### 2 - Encodage de la variable
-
-Avant de pouvoir envoyer la variable nous devons l’urlencoder. Tasker nous permet de manipuler les variables à notre convenance :
-
-- Créez une nouvelle action
-- Choisissez la catégorie : `Variable`
-- Choisissez ensuite l’action `Conversion de variable`
-
-Dans la page d’édition de l’action :
-
-- Saisissez le nom de votre variable créée précédemment (`%BODY` dans notre exemple)
-- Ensuite choisissez `URL Encode` dans la liste du champ Fonction
-- Validez en cliquant sur le logo Tasker en haut à gauche
-
-### 3 - Envoi au serveur
-
-- Créez une nouvelle action
 - Choisissez la catégorie : `Réseau`
-- Choisissez ensuite l’action `Post HTTP`
+- Choisissez ensuite l’action à effectuer : `Post HTTP`
 
-
-Dans la page d’édition de l’action :
+__Dans la page d’édition de l’action :__
 
 - Serveur:Port : `www.nomdomaine.com` ou `192.168.0.X:8080`
 - Chemin : `/messages/sms/`
-- Attributs : 
+- Données / Fichier: 
 {% highlight bash %}
-text=%BODY
+text=%SMSRB
+sender=%SMSRF
+grabber=<06XXXXXXXX>
+tag=<votre_phone_token>
 {% endhighlight %}
+
+Nous créons ici 4 paramètres contenant les informations relatives au SMS reçu. Les deux premiers, `text` et `sender` repésentent respectivement le contenu et l'expéditeur du message. Nous les alimentons avec des variables locales du système généreusement mise à notre disposition par Tasker.
+
+Les deux paramètres suivants sont à renseigner par vos soins: `grabber` correspond au numéro de téléphone de votre mobile (pas de variable système fiable) et `tag` est à renseigner avec la variable __PHONE_TOKEN__ de votre fichier de configuration. Ce token sert à assurer un minimum de sécurité.
 
 Tous les autres champs sont laissés vide par défaut puis validez en cliquant sur le logo Tasker en haut à gauche
 
 ## Activation de la tâche :
 
-Une fois le profil et la tâche associée créés, révenez à l’onglet principal `Profils` et vérifiez que votre profil est activé.
+Une fois le profil et la tâche associée créés, revenez à l’onglet principal `Profils` et vérifiez que votre profil est activé.
 
 ## Activation de Tasker
 
@@ -105,3 +77,6 @@ Pour que Tasker soit actif en tâche de fond sur votre mobile il faut l’active
 
 Il ne vous reste plus qu’à tester le bon fonctionnement de la tâche en vous envoyant à vous même un SMS avec votre serveur Bullit en marche.
 
+---
+
+{% include _docs/ip_server.md %}

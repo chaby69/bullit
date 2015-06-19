@@ -1,16 +1,12 @@
 ---
 layout: page-col
-title: Captation SMS
-description: Solutions possibles pour publier des SMS sur Bullit 
+title: Bullit SMS (Android)
+description: Application Android gratuite. La solution la plus simple et rapide pour mettre en place votre grabber SMS
 category: docs
-permalink: /docs/grabbers/
+permalink: /docs/bullit-sms/
 ---
 
-<p class="bg-info-box">
-Sont regroupées ici des solutions connues et testées pour recevoir des SMS et les envoyer au serveur Bullit
-</p>
-
-## Bullit SMS (Android)
+__Prérequis:__ `mobile Android`
 
 <img src="http://img.bullit.io/screenshots/bullit-sms_200.png" class="img-responsive pull-left" style="margin-right: 15px;" />
 
@@ -24,7 +20,7 @@ L'installation devrait se faire sans douleur. Une fois installée et démarrée 
 
 <hr/>
 
-### Configuration
+## Configuration
 
 L'interface vous propose 3 champs que vous devrez renseigner avant de pouvoir lancer la captation
 
@@ -55,21 +51,9 @@ Une fois ces paramètres renseignés, vous pouvez lancer le grabber en tapant su
 
 Tout en bas, vous disposez d'un compteur qui s'incrémentera tout au long de votre session. Vous pouvez le remettre à zéro quand vous le désirez en appuyant sur le petit bouton à sa droite.
 
-
-
-
-
 ---
 
-# Réception des SMS par le serveur
-<a name="config"></a>
-Pour pouvoir recevoir des SMS l'adresse IP du serveur de votre application doit être accessible depuis une autre machine (LAN, serveur distant, Heroku, ...) Le grabber, quel qu'il soit, doit être en mesure d'envoyer les SMS reçus au serveur, cela ne pourra donc pas marcher avec une adresse IP du type `127.0.0.1`
+{% include _docs/ip_server.md %}
 
-Pour tester en local avec Werkzeug, vous devrez passer des paramètres au lanceur `run.py` et spécifier l'adresse IP et le port que vous désirez utiliser:
 
-{% highlight bash %}
-(env) ~/bullit $ python run.py -b 192.168.0.11
-{% endhighlight %}
-
-N'oubliez pas d'adapter le paramètre `__SERVER_CONFIG__` dans votre fichier de configuration en conséquence.
 
