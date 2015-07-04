@@ -60,22 +60,28 @@ La création de notre action est sans doute la plus importante. Il vous faudra r
 
 <img src="/assets/step_6a.png" class="img-responsive center-block img-rounded" alt="Recette IFTTT" />
 
-__URL:__ Il s'agit de l'adresse public qui permet de poster des messages à votre Bullit. Dans notre exemple il s'agit d'une installation sur le service Heroku. Vous n'avez que le nom de domaine à modifier. Si votre Bullit n'a pas de nom de domaine propre, vous pourrez renseigner l'adresse IP et le port que vous avez défini lors de l'installation: `http://252.252.252.252:8080/messages/sms/`
+- __URL :__  
+    Il s'agit de l'adresse public qui permet de poster des messages à votre Bullit. Dans notre exemple il s'agit d'une installation sur le service Heroku. Vous n'avez que le nom de domaine à modifier. Si votre Bullit n'a pas de nom de domaine propre, vous pourrez renseigner l'adresse IP et le port que vous avez défini lors de l'installation: `http://252.252.252.252:8080/messages/sms/`
 
-__Method:__ Sélectionnez la méthode `POST`
+- __Method :__  
+    Sélectionnez la méthode `POST`
 
-__Content type:__ Choisissez `application/json`
+- __Content type :__  
+    Choisissez `application/json`
 
-__Body:__ 
-
-{% highlight bash %}
-{"text":"{{Text}}", "sender":"{{FromNumber}}", "grabber":"0606060606", "tag":"VotreTokenAutogénéréParHerokuOuQueVousAvezDéfiniVousMeme"}
-{% endhighlight %}
+- __Body :__  
+    {% highlight json %}
+    {% raw %}
+    {"text":"{{Text}}", "sender":"{{FromNumber}}", "grabber":"0606060606", "tag":"VotreTokenAutogénéréParHerokuOuQueVousAvezDéfiniVousMeme"}
+    {% endraw %}
+    {% endhighlight %}
 
 Le champ `Body` contient toutes les informations au format JSON du SMS que nous allons envoyer à Bullit. Vous devez impérativement adapter les paramètres `grabber` et `tag` à votre installation:
 
-- __grabber:__ Il s'agit du n° de téléphone du mobile qui qui sert à la captation et qui permet de cibler sur quel Wall les SMS reçus apparaîtront
-- __tag:__ Il correspond au paramètre __PHONE_TOKEN__ que vous avez défini dans votre fichier de configuration `config.py`. Si votre Bullit a été installé en mode automatique sur Heroku, ce token a été auto-généré et vous pourrez le retrouver dans les settings de votre dashboard Heroku.
+- grabber :  
+    Il s'agit du n° de téléphone du mobile qui qui sert à la captation et qui permet de cibler sur quel Wall les SMS reçus apparaîtront
+- tag :  
+    Il correspond au paramètre __PHONE_TOKEN__ que vous avez défini dans votre fichier de configuration `config.py`. Si votre Bullit a été installé en mode automatique sur Heroku, ce token a été auto-généré et vous pourrez le retrouver dans les settings de votre dashboard Heroku.
 
 
 ## 7 - Create and connect
