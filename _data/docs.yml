@@ -19,6 +19,7 @@
   desc: "Compte tenu de la popularité incontestable des SMS, leur affichage par Bullit facilite et démocratise son utilisation auprès du public. En fonction de votre équipement, de votre temps disponible ou de votre gout pour la bricole, plusieurs solutions s'offrent à vous."
   docs:
   - bullit-sms
+  - ifttt
   - tasker
   - smsenabler
 
