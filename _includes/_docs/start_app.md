@@ -3,7 +3,7 @@
 A la racine de votre projet, avec l'environnement activé, lancez la commande suivante pour démarrer l'application :
 
 {% highlight bash %}
-(env) socket-wall/ $ python run.py
+(env) bullit/ $ python run.py
 {% endhighlight %}
 
 Vous pouvez vous rendre à l'adresse <http://127.0.0.1:8080> 
@@ -18,7 +18,7 @@ Cette solution conviendra si vous affichez vos walls depuis cette machine (avec 
 Pour pouvoir accéder à Bullit sur le réseau local nous allons stopper l'application (Ctrl/C) et la relancer cette fois-ci en utilisant `Gunicorn` que nous avons déjà installé. Adaptez la ligne de commande ci-dessous pour que l'adresse IP corresponde à votre installation sur le réseau local:
 
 {% highlight bash %}
-(env) socket-wall/ $ gunicorn app:app --debug --worker-class=socketio.sgunicorn.GeventSocketIOWorker -t 5000 -b 192.168.X.X:8080
+(env) bullit/ $ gunicorn app:app --debug --worker-class=socketio.sgunicorn.GeventSocketIOWorker -t 5000 -b 192.168.X.X:8080
 {% endhighlight %}
 
 Maintenant depuis une autre machine vous pouvez ouvrir un navigateur sur cette adresse !

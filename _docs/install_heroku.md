@@ -35,14 +35,14 @@ Vous pouvez utiliser Bullit sur Heroku sans utiliser un de ces services. Il faud
 Toujours dans votre terminal, rendez-vous à la racine de votre projet:
 
 {% highlight bash %}
-$ cd socket-wall
-socket-wall/ $ 
+$ cd bullit
+bullit/ $ 
 {% endhighlight %}
 
 Nous allons ensuite créer l'application sur Heroku à l'aide du Toolbelt. Remplacez `<monapp>` par le nom que vous désirez utiliser.
 
 {% highlight bash %}
-socket-wall/ $ heroku create <monapp>
+bullit/ $ heroku create <monapp>
 {% endhighlight %}
 
 Si tout se passe comme prévu, vous devriez avoir une réponse de ce type:
@@ -62,7 +62,7 @@ En vous rendant dans la section [Personal Apps](https://dashboard.heroku.com/app
 Ajout de l'addon MongoLab à notre application:
 
 {% highlight bash %}
-socket-wall/ $ heroku addons:add mongolab:sandbox
+bullit/ $ heroku addons:add mongolab:sandbox
 {% endhighlight %}
 
 Si vous avez bien confirmé votre compte, vous devriez avoir ce message vous annoncant la disponibilité imminente de votre base de donnée:
@@ -151,7 +151,7 @@ heroku config:set AWS_SECRET_ACCESS_KEY='<votre_secret_access_key>'
 Notre future application est désormais configurée, il ne reste plus qu'à pousser le code de notre appli sur Heroku :
 
 {% highlight bash %}
-/socket-wall/ $ git push heroku master
+/bullit/ $ git push heroku master
 {% endhighlight %}
 
 Vous pourrez suivre l'évolution de l'installation qui peut durer quelques minutes. Une fois celle-ci terminée vous pouvez vous rendre sur [https://<monapp>.herokuapp.com/uer/welcome](https://<monapp>.herokuapp.com/uer/welcome) pour créer votre compte administrateur. Une fois ceci fait, vous pouvez vous connecter à votre dashboard et créer votre premier wall !

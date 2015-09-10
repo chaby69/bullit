@@ -38,6 +38,6 @@ CONF=/path/local/to/config_heroku.py
 Ensuite, il suffit de lancer Foreman d'un simple 
 
 {% highlight bash %}
-(env) socket-wall/ $ foreman start
+(env) bullit/ $ foreman start
 {% endhighlight %}
 
