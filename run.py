@@ -5,8 +5,9 @@ Bullit: lanceur
 '''
 
 from app import app
-from gevent import monkey; monkey.patch_all()
+from gevent import monkey
 from socketio.server import SocketIOServer
+monkey.patch_all()
 
 import logging
 
