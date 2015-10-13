@@ -18,7 +18,7 @@ MarkupSafe==0.23
 paramiko==1.15.1
 py-bcrypt==0.4
 pycrypto==2.6.1
-pymongo==2.7.2
+pymongo==3.0.3
 pytz==2014.4
 simplejson==3.6.5
 six==1.7.3

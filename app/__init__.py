@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from flask import Flask
-from pymongo import Connection, database
+# from pymongo import Connection, database
+from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask.ext.restful import Api
 from flask.ext.restful.utils import cors
@@ -43,9 +44,11 @@ app.session_interface = ItsdangerousSessionInterface()
 MongoDB
 """
 
-conn = Connection(app.config['MONGODB_URI'] if 'MONGODB_URI' in app.config else app.config['MONGOLAB_URI'])
+# conn = Connection(app.config['MONGODB_URI'] if 'MONGODB_URI' in app.config else app.config['MONGOLAB_URI'])
+conn = MongoClient(app.config['MONGODB_URI'] if 'MONGODB_URI' in app.config else app.config['MONGOLAB_URI'])
 dbname = os.path.split(app.config['MONGODB_URI'] if 'MONGODB_URI' in app.config else app.config['MONGOLAB_URI'])[1]
-db = database.Database(conn, dbname)
+# db = database.Database(conn, dbname)
+db = conn[dbname]
 
 prefs = db['prefs']
 
