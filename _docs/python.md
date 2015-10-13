@@ -8,7 +8,7 @@ permalink: /docs/python/
 
 ## Installer Python, Virtualenv et Pip
 
-Bullit est une application en Python. Si vous désirez le tester sur votre machine il faudra que Python 2.7 soit installé ainsi que les quelques outils indispensables que sont Virtualenv et Pip
+Bullit est une application en Python. Si vous désirez le tester sur votre machine il faudra que Python (v2.7.6) soit installé ainsi que les quelques outils indispensables que sont Virtualenv et Pip
 
 Vous trouverez sur les pages qui suivent toutes les informations d'installation de Python, Pip et Virtualenv en fonction de votre système d'exploitation:
 
