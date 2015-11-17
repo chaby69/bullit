@@ -6,7 +6,7 @@ date:   2015-01-21 22:32:28
 category: post
 ---
 
-Initié en 2009 par Hugues Aubin ([@hugobiwan](http://twitter.com/hugobiwan)) dans le cadre des Transmusicales, le SmsWall est un projet open-source qui permet d'afficher en temps réel des Tweets et SMS sur grand écran. Les travaux de Loic Hay ([@loichay](http://twitter.com/loichay)) et Olivier Etienne ([@oetienne](http://twitter.com/oetienne)) ont été très précieux comme point de départ. Il a connu par la suite plusieurs versions au sein de l'Association Bug ([@assobug](http://twitter.com/assobug)) pour devenir Bullit.
+Initié en 2009 par Hugues Aubin ([@hugobiwan](http://twitter.com/hugobiwan)) dans le cadre des Transmusicales et développé par dweez ([@dweez](http://twitter.com/dweez)), le SmsWall est un projet open-source qui permet d'afficher en temps réel des Tweets et SMS sur grand écran. Les travaux de Loic Hay ([@loichay](http://twitter.com/loichay)) et Olivier Etienne ([@oetienne](http://twitter.com/oetienne)) ont été très précieux comme point de départ. Il a connu par la suite plusieurs versions au sein de l'Association Bug ([@assobug](http://twitter.com/assobug)) pour devenir Bullit, digne successeur du SmsWall, doté de nombreuses fonctionnalités supplémentaires et toujours développé par [dweez](http://dweez.com).
 
 <p class="lead">Bullit est né du besoin de gérer plusieurs SmsWalls différents, en même temps et sur une longue période. C'est un peu un SmsWall "on demand" :)</p>
 
